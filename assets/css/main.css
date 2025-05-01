@@ -51,8 +51,30 @@ reset
   --white: #FFFFFF;
   --black: #000000;
 
-
 }
+.scrolling-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* Scrolling Content */
+.scrolling-content {
+  display: flex;
+  animation: scroll-left 20s linear infinite;
+}
+.result-item {
+  border-radius: 20px;
+  border: 1px solid rgb(14, 13, 13);
+  padding: 20px;
+}
+.result-item-top img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50% !important;
+}
+
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
