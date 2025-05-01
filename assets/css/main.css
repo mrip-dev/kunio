@@ -22,17 +22,69 @@ Table of contents
 12. preloader
 
 --------------------------------------------- */
-/* 
+/*
 ---------------------------------------------
 font & reset css
---------------------------------------------- 
+---------------------------------------------
 */
 @import url("https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900");
-/* 
+/*
 ---------------------------------------------
 reset
---------------------------------------------- 
+---------------------------------------------
 */
+:root {
+  --body-font: "Roboto", sans-serif;
+  --heading-font: 'Open Sans', sans-serif;
+  --nav-font: 'Open Sans', sans-serif;
+  --primary-color: #1E002C;
+  --primary-light: #3D004F;
+  --primary-dark: #12001E;
+  --accent-color: #A10000;
+  --accent-light: #C40000;
+  --accent-dark: #7F0000;
+  --text-color: #000000;
+  --text-light: #333333;
+  --text-dark: #111111;
+  --primary-purple: #1E002C;
+  --accent-red: #A10000;
+  --white: #FFFFFF;
+  --black: #000000;
+
+
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root {
+  --background-color: #ffffff;
+  /* Background color for the entire website, including individual sections */
+  --default-color: #1E002C;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #485664;
+  /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #A10000;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #f7fafc;
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #f7fafc;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #485664;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #A10000;
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -101,10 +153,10 @@ ul {
   margin-bottom: 0px;
 }
 
-/* 
+/*
 ---------------------------------------------
 global styles
---------------------------------------------- 
+---------------------------------------------
 */
 html,
 body {
@@ -113,12 +165,12 @@ body {
 }
 
 ::selection {
-  background: #ff589e;
+  background: var(--accent-dark);
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #ff589e;
+  background: var(--accent-dark);
   color: #fff;
 }
 
@@ -314,7 +366,7 @@ a.main-button-slider {
   font-size: 13px;
   border-radius: 20px;
   padding: 12px 20px;
-  background-color: #ff589e;
+  background-color: var(--accent-dark);
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 0.25px;
@@ -325,14 +377,14 @@ a.main-button-slider {
 }
 
 a.main-button-slider:hover {
-  background-color: #8261ee;
+  background-color: var(--accent-light);
 }
 
 a.main-button {
   font-size: 13px;
   border-radius: 20px;
   padding: 12px 20px;
-  background-color: #8261ee;
+  background-color: var(--accent-light);
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 0.25px;
@@ -343,7 +395,7 @@ a.main-button {
 }
 
 a.main-button:hover {
-  background-color: #ff589e;
+  background-color: var(--accent-dark);
 }
 
 button.main-button {
@@ -353,7 +405,7 @@ button.main-button {
   font-size: 13px;
   border-radius: 20px;
   padding: 12px 20px;
-  background-color: #8261ee;
+  background-color: var(--accent-light);
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 0.25px;
@@ -364,14 +416,14 @@ button.main-button {
 }
 
 button.main-button:hover {
-  background-color: #ff589e;
+  background-color: var(--accent-dark);
 }
 
 
-/* 
+/*
 ---------------------------------------------
 header
---------------------------------------------- 
+---------------------------------------------
 */
 .header-area {
   position: fixed;
@@ -391,6 +443,13 @@ header
   border-radius: 40px;
   min-height: 80px;
   background: transparent;
+}
+/* ///////// Change bg on scroll  */
+
+.scrolled .main-nav {
+
+  background: #771111a7;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
 }
 
 .header-area .main-nav .logo {
@@ -436,7 +495,7 @@ header
   display: block;
   font-weight: 500;
   font-size: 13px;
-  color: #fff;
+  color: #fff !important;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -448,7 +507,7 @@ header
 }
 
 .header-area .main-nav .nav li a:hover {
-  color: #ff589e;
+  color: #f5f4f5;
 }
 
 .header-area .main-nav .menu-trigger {
@@ -560,7 +619,7 @@ header
 }
 
 .header-area.header-sticky .nav li a.active {
-  color: #ff589e;
+  color: var(--accent-dark);
 }
 
 @media (max-width: 1200px) {
@@ -633,10 +692,10 @@ header
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 welcome
---------------------------------------------- 
+---------------------------------------------
 */
 .welcome-area {
   overflow: hidden;
@@ -644,11 +703,18 @@ welcome
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(../images/banner-bg.png);
+  /* background-image: url(../images/banner-bg.png);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover; 
-  height: 100vh;
+  background-size: cover;  */
+  background: radial-gradient(
+    circle,
+    #300000 0%,
+    #200000 30%,
+    #100000 60%,
+    #000000 100%
+  );
+  height: 120vh;
 }
 
 .welcome-area .header-text {
@@ -745,10 +811,10 @@ welcome
 }
 
 
-/* 
+/*
 ---------------------------------------------
 features
---------------------------------------------- 
+---------------------------------------------
 */
 .features-small-item {
   cursor: pointer;
@@ -769,7 +835,7 @@ features
 }
 
 .features-small-item:hover .icon {
-  background-color: #ff589e;
+  background-color: var(--accent-dark);
 }
 
 .features-small-item .icon {
@@ -783,7 +849,7 @@ features
   margin: auto;
   position: relative;
   margin-bottom: 30px;
-  background: #8261ee;
+  background: var(--accent-light);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -835,10 +901,10 @@ features
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 parallax & home seperator
---------------------------------------------- 
+---------------------------------------------
 */
 .mini {
   min-height: 215px;
@@ -1105,10 +1171,10 @@ parallax & home seperator
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 team
---------------------------------------------- 
+---------------------------------------------
 */
 .team-item {
   background: #fff;
@@ -1175,7 +1241,7 @@ team
   display: block;
   font-weight: 400;
   font-size: 15px;
-  color: #ff589e;
+  color: var(--accent-dark);
   letter-spacing: 0.25px;
 }
 
@@ -1191,10 +1257,10 @@ team
   line-height: 26px;
 }
 
-/* 
+/*
 ---------------------------------------------
 pricing
---------------------------------------------- 
+---------------------------------------------
 */
 .pricing-item {
   background: #FFFFFF;
@@ -1214,7 +1280,7 @@ pricing
 }
 
 .pricing-item.active .pricing-body .price-wrapper {
-  background-color: #ff589e;
+  background-color: var(--accent-dark);
 }
 
 .pricing-item.active .pricing-body .price-wrapper .currency {
@@ -1257,7 +1323,7 @@ pricing
   text-align: center;
   padding-top: 20px;
   padding-bottom: 13px;
-  background: #8261ee;
+  background: var(--accent-light);
   width: 80%;
   margin: auto;
   margin-bottom: 40px;
@@ -1308,10 +1374,10 @@ pricing
   margin-top: 50px;
 }
 
-/* 
+/*
 ---------------------------------------------
 blog
---------------------------------------------- 
+---------------------------------------------
 */
 .blog-post-thumb {
   text-align: center;
@@ -1351,7 +1417,7 @@ blog
 }
 
 .blog-post-thumb h3 a:hover {
-  color: #ff589e;
+  color: var(--accent-dark);
 }
 
 .blog-post-thumb .text {
@@ -1383,10 +1449,10 @@ blog
 }
 
 
-/* 
+/*
 ---------------------------------------------
 contact
---------------------------------------------- 
+---------------------------------------------
 */
 
 #contact-us {
@@ -1436,13 +1502,13 @@ contact
   padding: 20px;
 }
 
-/* 
+/*
 ---------------------------------------------
 footer
---------------------------------------------- 
+---------------------------------------------
 */
 footer {
-  background-image: linear-gradient(127deg, #a759d1 0%, #8261ee 91%);
+  background-image: linear-gradient(127deg, var(--accent-dark) 0%, var(--accent-light) 91%);
   padding-top: 30px;
 }
 
@@ -1474,7 +1540,7 @@ footer .social li a {
 }
 
 footer .social li a:hover {
-  background-color: #ff589e;
+  background-color: var(--accent-dark);
   color: #fff;
 }
 
@@ -1503,14 +1569,14 @@ footer .copyright {
   }
 }
 
-/* 
+/*
 ---------------------------------------------
 preloader
---------------------------------------------- 
+---------------------------------------------
 */
 #preloader {
   overflow: hidden;
-  background-image: linear-gradient(135deg, #a759d1 0%, #8261ee 100%);
+  background-image: linear-gradient(135deg, var(--black) 0%, var(--accent-dark) 100%);
   left: 0;
   right: 0;
   top: 0;
@@ -1585,4 +1651,22 @@ preloader
   100% {
     opacity: 0;
   }
+}
+
+
+.btn-getstarted,
+.btn-getstarted:focus {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-size: 14px;
+  padding: 8px 26px;
+  margin: 0;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-getstarted:hover,
+.btn-getstarted:focus:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
