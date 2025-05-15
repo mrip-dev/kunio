@@ -64,16 +64,29 @@ reset
   display: flex;
   animation: scroll-left 20s linear infinite;
 }
+.vsl-result {
+  border-radius: 20px;
+  width: 100%;
+  height: 200px;
+}
+
 .result-item {
   border-radius: 20px;
-  border: 1px solid rgb(249, 245, 245);
+  border: 1px solid white;
+  justify-content: center;
+  text-align: center;
   padding: 20px;
+  box-shadow: 5px 5px 5px rgba(27, 23, 23, 0.687);
 }
+
 .result-item-top img {
   width: 100px;
   height: 100px;
+
   border-radius: 50% !important;
 }
+
+
 
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -475,7 +488,7 @@ header
     circle,
     #30000079 0%,
 
-    #00000019 100%
+    #00000070 100%
   );
   box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
 }
@@ -1890,10 +1903,10 @@ h6 {
     height: auto;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 0px !important;
     /* Adds space between cards */
-    padding: 2px;
+    padding: 0px !important;
   }
 }
 
@@ -1976,6 +1989,7 @@ h6 {
   height: 250px;
   border-radius: 10px;
   padding: 20px;
+  margin-bottom: 50px;
 }
 .step-card h5 {
   font-weight: 600;
@@ -2250,4 +2264,300 @@ h6 {
 .faq .faq-container .faq-active .faq-toggle {
   transform: rotate(90deg);
   color: var(--accent-color);
+}
+
+
+
+
+.comparison-section {
+  /* py-5 equivalent for padding, adjust if needed */
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  /* background-color: #111;  Dark background for the section itself - if your body isn't already this dark */
+}
+
+.comparison-section h2 {
+  font-size: 2.5em; /* Adjust as needed */
+  /* fw-bold and text-center are Bootstrap classes, text-light too */
+  /* mb-5 equivalent for margin, Bootstrap class */
+  margin-bottom: 3rem !important; /* if using bootstrap, otherwise use margin-bottom in CSS */
+  color: #fff; /* Ensures heading is white */
+}
+
+.comparison-grid {
+  display: flex;
+  justify-content: center; /* Centers the columns if they don't fill the width */
+  gap: 30px; /* Space between columns */
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.column {
+  background-color: #1A1A1D; /* Dark grey for the boxes, slightly lighter than pure black */
+  padding: 30px 35px;
+  border-radius: 12px; /* Rounded corners */
+  width: 100%;
+  max-width: 480px; /* Adjust as needed, image looks like they are quite wide */
+  box-sizing: border-box;
+  text-align: left;
+  min-height: 300px; /* Give some minimum height */
+}
+
+.column h3 {
+  font-size: 1.6em; /* Adjust as needed */
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  color: #e0e0e0; /* Lighter grey for headings */
+}
+
+.other-agencies h3 .dot {
+  display: inline-block;
+  min-width: 18px; /* min-width for consistency */
+  width: 18px;
+  height: 18px;
+  background-color: var(--accent-dark); /* Purple dot - adjusted to a common purple */
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.kunio-agency {
+  /* Gradient background for the "kunio" column */
+  background: linear-gradient(135deg, #52011a 0%, #2C1D43 100%); /* Adjust colors for the gradient from image */
+}
+
+.kunio-agency h3 {
+  color: #fff; /* White heading for kunio */
+  font-weight: bold;
+}
+
+.agency-logo {
+  width: 50px; /* Adjust size as needed, the 'S' logo in image is small */
+  height: auto;
+  margin-right: 10px;
+  /* Assuming your logo-white.png is already white, no filter needed.
+     If it's a dark logo on a light background and you need it white:
+     filter: brightness(0) invert(1);
+  */
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.column ul li {
+  font-size: 1em; /* Adjust as needed */
+  line-height: 1.6;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: flex-start; /* Align icon with the start of multi-line text */
+  color: #bdbdbd; /* Text color for list items */
+}
+
+.column ul li:last-child {
+  margin-bottom: 0;
+}
+
+.icon-cross,
+.icon-check {
+  margin-right: 12px;
+  font-size: 1.1em; /* Adjust icon size */
+  line-height: 1.6; /* Match text line-height for alignment */
+  font-weight: bold;
+}
+
+.icon-cross {
+  color: #cccccc; /* Color for the X icon (light grey) */
+}
+
+.icon-check {
+  color: var(--accent-dark); /* Purple color for the check icon (matching a purple theme) */
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) { /* Typical Bootstrap lg breakpoint */
+    .comparison-grid {
+        flex-direction: column;
+        align-items: center; /* Center columns when stacked */
+    }
+    .column {
+        max-width: 600px; /* Allow columns to take more width on smaller screens */
+        width: 90%; /* Ensure it's not too wide on tablets */
+    }
+}
+
+@media (max-width: 768px) { /* Typical Bootstrap md breakpoint */
+  .comparison-section h2 {
+    font-size: 2em;
+  }
+  .column h3 {
+    font-size: 1.4em;
+  }
+  .column ul li {
+    font-size: 0.95em;
+  }
+}
+.img-fluid {
+  border-radius: 20px;
+}
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about .about-img {
+  position: relative;
+  margin: 60px 0 0 60px;
+  border-radius: 20px;
+}
+
+.img-fluid {
+  border-radius: 20px;
+}
+
+.about .about-img:before {
+  position: absolute;
+  inset: -60px 0 0 -60px;
+  content: "";
+  background: url("../img/about-bg.png") top left;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.about .about-img img {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 575px) {
+  .about .about-img {
+    margin: 30px 0 0 30px;
+  }
+
+  .about .about-img:before {
+    inset: -30px 0 0 -30px;
+  }
+}
+
+.about h3 {
+  font-weight: 300;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .about h3 {
+    font-size: 28px;
+  }
+}
+
+.about .nav-pills {
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.about .nav-pills li+li {
+  margin-left: 40px;
+}
+
+.about .nav-link {
+  background: none;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--default-color);
+  padding: 12px 0;
+  margin-bottom: -2px;
+  border-radius: 0;
+}
+
+.about .nav-link.active {
+  color: var(--accent-color);
+  background: none;
+  border-bottom: 3px solid var(--accent-color);
+}
+
+@media (max-width: 575px) {
+  .about .nav-link {
+    font-size: 16px;
+  }
+}
+
+.about .tab-content h4 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--default-color);
+}
+
+.about .tab-content i {
+  font-size: 22px;
+  line-height: 0;
+  margin-right: 8px;
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Clients Section
+--------------------------------------------------------------*/
+
+.calendly-section {
+  /* background-color: #000000; */
+  /* py-5 is a Bootstrap class, if not using, add:
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  */
+}
+
+.calendly-section h2 {
+  /* fw-bold, text-center, mb-4, text-light are Bootstrap classes */
+  font-size: 2.5em; /* Adjust as needed */
+  color: #fff; /* Ensure heading is white */
+}
+
+.calendly-section p {
+  /* text-center, mb-5, text-light are Bootstrap classes */
+  color: #e0e0e0; /* Lighter text color for paragraphs */
+}
+
+.calendly-embed-container {
+  max-width: 1000px; /* Adjust max-width as desired for the Calendly widget */
+  margin: 0 auto;    /* Center the container */
+  background-color: #ffffff; /* Calendly widget is typically white */
+  border-radius: 10px; /* Optional: rounded corners for the container */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Optional: a subtle shadow */
+  overflow: hidden; /* Important for keeping the Calendly widget within the rounded corners */
+}
+
+/*
+  The Calendly script (widget.js) will handle the styling and responsiveness
+  of the iframe it injects into the .calendly-inline-widget div.
+  The `min-width` and `height` are usually set in the div itself as per Calendly's instructions.
+*/
+
+/* Styling for the noscript fallback link */
+.calendly-section .noscript a {
+  color: #8A2BE2; /* Your brand's purple color for links */
+  text-decoration: underline;
+}
+
+.calendly-section .noscript a:hover {
+  color: #701ebd; /* Darker purple on hover */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .calendly-section h2 {
+    font-size: 2em;
+  }
+  .calendly-section p {
+    font-size: 1em;
+  }
+  /* You might want to adjust the height of the Calendly widget on smaller screens
+     if the default `height:700px;` feels too tall. Calendly's widget is generally responsive.
+     Example:
+  .calendly-embed-container .calendly-inline-widget {
+    height: 650px !important;
+  }
+  */
 }
