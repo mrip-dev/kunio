@@ -474,10 +474,20 @@ header
 }
 
 .header-area .main-nav {
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 15px rgba(118, 63, 63, 0.975);
   border-radius: 40px;
-  min-height: 80px;
+  min-height: 70px;
+  max-width: 800px;
   background: transparent;
+  background: radial-gradient(
+    circle,
+    #30000079 0%,
+
+    #00000070 100%
+  );
+  margin: auto;
+
+  /* border: 0.5px solid  var(--white); */
 }
 /* ///////// Change bg on scroll  */
 
@@ -495,7 +505,7 @@ header
 
 .header-area .main-nav .logo {
   float: left;
-  margin-top: 37px;
+  margin-top: 10px !important;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -755,7 +765,7 @@ welcome
     #100000 60%,
     #000000 100%
   );
-  min-height: 180vh;
+  min-height: 140vh;
 }
 
 .myip-bg{
@@ -767,9 +777,10 @@ welcome
     #000000 100%
   );
 }
+
 .welcome-area .header-text {
   position: absolute;
-  top: 50%;
+  top: 60%;
   transform: translateY(-55%);
   text-align: center;
   width: 100%;
@@ -1711,7 +1722,7 @@ preloader
   font-size: 14px;
   padding: 8px 26px;
   margin: 0;
-  border-radius: 4px;
+  border-radius: 40px;
   transition: 0.3s;
 }
 
@@ -2560,4 +2571,46 @@ h6 {
     height: 650px !important;
   }
   */
+}
+
+
+.header-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- UPDATED Highlight Box Styling --- */
+.highlight-box {
+    background-color: rgba(61, 0, 79, 0.25); /* --primary-light with 25% alpha */
+    color: var(--white); /* Ensure text is readable */
+    padding: 15px 25px;
+    margin-bottom: 30px;
+    display: inline-block; /* So it doesn't take full width unless content pushes it */
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(161, 0, 0, 0.3); /* Subtle glow from accent color */
+    position: relative; /* For z-index if needed, and for pseudo-elements if added later */
+    z-index: 3;
+}
+@media (max-width: 408px) {
+   .highlight-box {
+    margin-top: 100px;
+   }
+}
+/* --- NEW: Video Container and Animations --- */
+.video-container-wrapper {
+    position: relative;
+    /* padding: 15px; Add some padding if you want the animations further from the video edges */
+    /* border: 1px solid rgba(var(--primary-light-rgb), 0.1); Optional faint border for the area */
+    max-width: 700px; /* Or whatever max-width your vsl-hero could take up */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.vsl-hero { /* Your iframe class */
+    position: relative;
+    z-index: 5; /* Ensure video is above its own frame animations */
+    /* Consider adding a slight box-shadow to the video itself to lift it */
+    /* box-shadow: 0 0 20px rgba(0,0,0,0.5); */
+    width: 100%; /* Ensure iframe is responsive within its container */
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
 }
