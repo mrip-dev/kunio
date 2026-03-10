@@ -1,1035 +1,2392 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>KunioCreatives | YouTube Growth</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <title>Kunio - Maximize Audience Retention</title>
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        :root {
+            --primary: #3499d4;
+            --primary-glow: rgba(52, 153, 212, 0.6);
+            --primary-soft: #5bb5e8;
+            --primary-deep: #132a5e;
+            --bg-base: #0a1128; /* Deeper, richer dark baseline */
+            --bg-ink: #050a15;
+            --text-color: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'DM Sans', sans-serif;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
 
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            z-index: 1100;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .scroll-progress span {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--primary-deep), var(--primary), var(--primary-soft));
+            box-shadow: 0 0 16px rgba(52, 153, 212, 0.6);
+        }
+
+        /* =========================================
+           ADDX STUDIO STYLE ANIMATED BACKGROUNDS
+        ========================================= */
+        .gradient-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 20%, #122653 0%, #0a1128 40%, #050a15 100%);
+        }
+
+        .gradient-bg::before,
+        .gradient-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .gradient-bg::before {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 0.95), transparent 78%);
+            opacity: 0.45;
+            animation: drift-grid 36s linear infinite;
+        }
+
+        .gradient-bg::after {
+            background: repeating-linear-gradient(120deg, transparent 0 14px, rgba(52, 153, 212, 0.06) 14px 15px);
+            opacity: 0.2;
+            mix-blend-mode: screen;
+            animation: sweep-lines 28s linear infinite;
+        }
+
+        /* Glowing Orbs */
+        .glowing-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.6;
+            animation: float-blob 20s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            width: 600px; height: 600px;
+            background: #132a5e;
+            top: -10%; left: -10%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 500px; height: 500px;
+            background: #3499d4;
+            bottom: -20%; right: -10%;
+            opacity: 0.3;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 400px; height: 400px;
+            background: #0d1e46;
+            top: 40%; left: 40%;
+            animation-duration: 25s;
+        }
+
+        @keyframes float-blob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(10%, 15%) scale(1.1); }
+            100% { transform: translate(-5%, 5%) scale(0.9); }
+        }
+
+        @keyframes drift-grid {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-72px, -72px, 0); }
+        }
+
+        @keyframes sweep-lines {
+            0% { transform: translate3d(-8%, -10%, 0); }
+            50% { transform: translate3d(8%, 8%, 0); }
+            100% { transform: translate3d(-8%, -10%, 0); }
+        }
+
+        /* =========================================
+           TYPOGRAPHY & GRADIENTS
+        ========================================= */
+        h1, h2, h3 { font-family: var(--font-heading); }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, #3499d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-lead-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            margin: 0 auto 18px;
+            display: grid;
+            place-items: center;
+            font-size: 1.45rem;
+            color: #dff3ff;
+            background: linear-gradient(145deg, rgba(52, 153, 212, 0.35), rgba(19, 42, 94, 0.5));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(52, 153, 212, 0.3);
+            transform: perspective(600px) rotateX(8deg);
+            animation: float-icon 4s ease-in-out infinite;
+        }
+
+        .mini-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: inline-grid;
+            place-items: center;
+            font-size: 1rem;
+            color: #d9f0ff;
+            background: linear-gradient(140deg, rgba(52, 153, 212, 0.32), rgba(12, 26, 61, 0.7));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            margin-bottom: 14px;
+        }
+
+        @keyframes float-icon {
+            0%, 100% { transform: perspective(600px) rotateX(8deg) translateY(0); }
+            50% { transform: perspective(600px) rotateX(8deg) translateY(-4px); }
+        }
+
+        .trust-strip {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .trust-chip {
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #e4f4ff;
+            border: 1px solid rgba(52, 153, 212, 0.35);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* =========================================
+           PREMIUM ADDX-STYLE CARDS
+        ========================================= */
+        .addx-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 40px;
+            transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.4s ease, box-shadow 0.45s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .addx-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid transparent;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(52, 153, 212, 0.16), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        /* Inner glow on hover */
+        .addx-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 100%;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(52,153,212,0.1), transparent 40%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .addx-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(52, 153, 212, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(52,153,212,0.15);
+        }
+
+        .addx-card:hover::after { opacity: 1; }
+
+        .addx-card:hover::before { opacity: 1; }
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+        .btn-glow {
+            position: relative;
+            background: transparent;
+            color: #fff;
+            font-family: var(--font-body);
+            font-weight: 700;
+            padding: 16px 45px;
+            border-radius: 50px;
+            border: 1px solid rgba(52, 153, 212, 0.5);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            z-index: 1;
+        }
+
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 200%;
+            left: -180px;
+            top: -50%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+            transform: rotate(18deg);
+            transition: transform 0.8s ease, left 0.8s ease;
+            pointer-events: none;
+        }
+
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, #132a5e, #3499d4);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .btn-glow:hover {
+            border-color: transparent;
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(52, 153, 212, 0.4);
+            color: #fff;
+        }
+
+        .btn-glow:hover::before { opacity: 1; }
+        .btn-glow:hover::after { left: 120%; transform: rotate(18deg) translateX(30px); }
+
+        /* =========================================
+           SPECIFIC SECTIONS
+        ========================================= */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; overflow: hidden; }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .container {
+            padding-top: 22px;
+        }
+
+        .hero .container > * {
+            animation: rise-in 1s ease both;
+        }
+
+        .hero .container > *:nth-child(2) { animation-delay: 0.1s; }
+        .hero .container > *:nth-child(3) { animation-delay: 0.2s; }
+        .hero .container > *:nth-child(4) { animation-delay: 0.3s; }
+        .hero .container > *:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes rise-in {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(52, 153, 212, 0.3);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(52, 153, 212, 0.2);
+        }
+
+        .nav-master {
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(120deg, rgba(14, 34, 78, 0.78), rgba(5, 14, 36, 0.76));
+            padding: 8px 10px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-master::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 18%, transparent 40%);
+            opacity: 0.42;
+            pointer-events: none;
+        }
+
+        .navbar-brand-wrap {
+            min-width: 205px;
+            padding-left: 8px;
+        }
+
+        .nav-links-wrap {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar-cta-desktop {
+            min-width: 170px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-pill {
+            color: rgba(227, 242, 255, 0.76) !important;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            padding: 7px 12px !important;
+            border-radius: 999px;
+            transition: background 0.26s ease, color 0.26s ease;
+        }
+
+        .nav-pill:hover,
+        .nav-pill.active {
+            color: #eaf7ff !important;
+            background: rgba(52, 153, 212, 0.18);
+        }
+
+        .hero-mini-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(120, 214, 255, 0.4);
+            background: rgba(52, 153, 212, 0.12);
+            color: #d9f1ff;
+            padding: 7px 16px;
+            font-size: 0.74rem;
+            letter-spacing: 0.55px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-mini-note i {
+            font-size: 0.72rem;
+            color: #8be2ff;
+        }
+
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .shorts-card {
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            background: linear-gradient(165deg, rgba(8, 17, 37, 0.94), rgba(11, 24, 52, 0.92));
+            transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.35s ease;
+        }
+
+        button.shorts-card {
+            width: 100%;
+            padding: 0;
+            text-align: left;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .shorts-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(82, 196, 255, 0.55);
+            box-shadow: 0 12px 24px rgba(52, 153, 212, 0.25);
+        }
+
+        .shorts-thumb {
+            position: relative;
+            aspect-ratio: 9 / 16;
+            overflow: hidden;
+        }
+
+        .shorts-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .shorts-play {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .shorts-content {
+            padding: 12px;
+        }
+
+        .shorts-title {
+            margin: 0 0 6px;
+            font-size: 0.86rem;
+            color: #ecf8ff;
+            line-height: 1.4;
+        }
+
+        .shorts-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .vsl-wrapper {
+            position: relative;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(52,153,212,0.5), transparent);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(52,153,212,0.2);
+            margin: 48px auto 0;
+            max-width: 980px;
+            width: 100%;
+            display: block;
+        }
+
+        .vsl-inner {
+            background: #000;
+            border-radius: 18px;
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+
+        .vsl-inner iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+
+        /* Portfolio Grids */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .portfolio-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(165deg, rgba(7, 16, 34, 0.95), rgba(9, 21, 47, 0.88));
+            transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.35s ease, box-shadow 0.5s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 16px 35px rgba(52,153,212,0.28);
+        }
+        .portfolio-trigger {
+            width: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            display: block;
+            background: transparent;
+            text-align: left;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .portfolio-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: block;
+            object-fit: cover;
+            transform: scale(1);
+            transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.5s ease;
+            filter: saturate(1.02) contrast(1.02);
+        }
+
+        .portfolio-item:hover .portfolio-thumb {
+            transform: scale(1.04);
+            filter: saturate(1.08) contrast(1.05);
+        }
+
+        .portfolio-cover {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        .portfolio-content {
+            padding: 16px 14px 14px;
+        }
+
+        .portfolio-title {
+            font-size: 0.94rem;
+            line-height: 1.45;
+            margin-bottom: 10px;
+            color: #f2f8ff;
+        }
+
+        .portfolio-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .tag-pill {
+            font-size: 0.66rem;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.04);
+            color: #d8eeff;
+        }
+
+        .tag-green { border-color: rgba(101, 229, 153, 0.5); color: #8df4b8; }
+        .tag-cyan { border-color: rgba(94, 219, 255, 0.5); color: #8deaff; }
+        .tag-violet { border-color: rgba(165, 144, 255, 0.5); color: #beb1ff; }
+
+            margin-bottom: 0;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+
+        .hero-badge-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 26px;
+        }
+        }
+
+        .stat-pill {
+            font-size: 0.72rem;
+            color: #d8ebff;
+            border-radius: 999px;
+            padding: 5px 9px;
+            border: 1px solid rgba(52, 153, 212, 0.32);
+            background: rgba(52, 153, 212, 0.08);
+        }
+
+        .portfolio-item::after {
+            content: '\f144';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+            pointer-events: none;
+            text-shadow: 0 0 18px rgba(52, 153, 212, 0.65);
+        }
+
+        .portfolio-item:hover::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .portfolio-section-note {
+            max-width: 700px;
+            margin: 0 auto 34px;
+            text-align: center;
+            color: rgba(232, 244, 255, 0.75);
+        }
+
+        .portfolio-featured-row {
+            margin-bottom: 26px;
+        }
+
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .case-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .case-result {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(52, 153, 212, 0.38);
+            background: rgba(52, 153, 212, 0.08);
+            font-size: 0.9rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .package-card {
+            position: relative;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(165deg, rgba(8, 18, 39, 0.95), rgba(12, 27, 59, 0.86));
+            padding: 26px;
+            height: 100%;
+        }
+
+        .package-card.popular {
+            border-color: rgba(52, 153, 212, 0.65);
+            box-shadow: 0 14px 32px rgba(52, 153, 212, 0.2);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #eaffff;
+            border: 1px solid rgba(117, 232, 255, 0.6);
+            background: rgba(58, 189, 223, 0.2);
+        }
+
+        .package-price {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            line-height: 1;
+            margin: 8px 0 12px;
+            color: #eef8ff;
+        }
+
+        .package-list {
+            margin: 14px 0 0;
+            padding-left: 18px;
+            color: rgba(230, 243, 255, 0.86);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .guarantee-wrap {
+            border-radius: 22px;
+            border: 1px solid rgba(52, 153, 212, 0.35);
+            background: radial-gradient(circle at 5% 15%, rgba(52, 153, 212, 0.16), rgba(8, 18, 38, 0.95) 55%);
+            padding: 34px;
+        }
+
+        .guarantee-points {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .guarantee-point {
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 14px;
+            text-align: center;
+            font-size: 0.87rem;
+        }
+
+        .faq-item {
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-item .accordion-button {
+            background: transparent;
+            color: #f0f7ff;
+            font-weight: 700;
+            box-shadow: none;
+            padding: 16px 18px;
+        }
+
+        .faq-item .accordion-button::after {
+            display: none;
+        }
+
+        .faq-chevron {
+            margin-left: auto;
+            color: #8ad9ff;
+            transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .faq-item .accordion-button:not(.collapsed) .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-item .accordion-button:not(.collapsed) {
+            background: rgba(52, 153, 212, 0.08);
+            color: #ffffff;
+        }
+
+        .faq-item .accordion-body {
+            color: rgba(226, 241, 255, 0.82);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .team-card {
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(165deg, rgba(8, 18, 38, 0.92), rgba(13, 27, 54, 0.9));
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-avatar {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(124, 216, 255, 0.6);
+            box-shadow: 0 0 0 6px rgba(52, 153, 212, 0.16), 0 0 22px rgba(52, 153, 212, 0.52);
+            animation: avatar-pulse 3.8s ease-in-out infinite;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes avatar-pulse {
+            0%, 100% { box-shadow: 0 0 0 6px rgba(52, 153, 212, 0.16), 0 0 22px rgba(52, 153, 212, 0.52); }
+            50% { box-shadow: 0 0 0 9px rgba(52, 153, 212, 0.12), 0 0 30px rgba(52, 153, 212, 0.62); }
+        }
+
+        .site-footer {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: linear-gradient(180deg, rgba(6, 12, 25, 0.94), rgba(4, 9, 20, 1));
+            padding: 58px 0 28px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 26px;
+        }
+
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 1.7rem;
+            color: #f2f9ff;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            color: rgba(223, 238, 255, 0.72);
+            max-width: 420px;
+            font-size: 0.95rem;
+        }
+
+        .footer-title {
+            color: #ecf7ff;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(213, 234, 255, 0.78);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        .footer-links a:hover {
+            color: #9fddff;
+            transform: translateX(3px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            text-decoration: none;
+            color: #eaf7ff;
+            border: 1px solid rgba(103, 202, 255, 0.45);
+            background: rgba(52, 153, 212, 0.14);
+            transition: transform 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+        }
+
+        .footer-social a:hover {
+            transform: translateY(-3px);
+            background: rgba(52, 153, 212, 0.28);
+            box-shadow: 0 8px 18px rgba(52, 153, 212, 0.35);
+        }
+
+        .footer-bottom {
+            margin-top: 28px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(190, 218, 242, 0.62);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .video-modal .modal-content {
+            background: rgba(5, 10, 21, 0.96);
+            border: 1px solid rgba(52, 153, 212, 0.4);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+        }
+
+        .video-modal .modal-header {
+            border-bottom-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .video-modal .btn-close {
+            filter: invert(1);
+            opacity: 0.85;
+        }
+
+        .video-frame-wrap {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+        }
+
+        .video-frame-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .metric-card {
+            padding: 26px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 18px;
+        }
+
+        .metric-track {
+            width: 100%;
+            height: 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .metric-fill {
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #173978, #3499d4);
+            box-shadow: 0 0 14px rgba(52, 153, 212, 0.45);
+            transition: width 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .timeline-wrap {
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 30px 0;
+        }
+
+        .timeline-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            transform: translateX(-50%);
+            background: linear-gradient(180deg, rgba(52, 153, 212, 0.1), rgba(52, 153, 212, 0.7), rgba(52, 153, 212, 0.1));
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 0 36px 36px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 18px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 8px rgba(52, 153, 212, 0.15), 0 0 18px rgba(52, 153, 212, 0.8);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -7px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -7px;
+        }
+
+        .timeline-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 22px;
+            backdrop-filter: blur(12px);
+        }
+
+        .roi-grid {
+            display: grid;
+            gap: 18px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin: 24px 0;
+        }
+
+        .roi-input {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            color: #fff;
+            width: 100%;
+            padding: 10px 12px;
+        }
+
+        .roi-input:focus {
+            outline: none;
+            border-color: rgba(52, 153, 212, 0.7);
+            box-shadow: 0 0 0 3px rgba(52, 153, 212, 0.2);
+        }
+
+        .roi-output {
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid rgba(52, 153, 212, 0.35);
+            background: linear-gradient(120deg, rgba(19, 42, 94, 0.35), rgba(52, 153, 212, 0.18));
+        }
+
+        .mobile-cta {
+            position: fixed;
+            left: 14px;
+            right: 14px;
+            bottom: 14px;
+            padding: 10px;
+            border-radius: 999px;
+            background: rgba(5, 10, 21, 0.92);
+            border: 1px solid rgba(52, 153, 212, 0.5);
+            backdrop-filter: blur(14px);
+            display: none;
+            z-index: 1200;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .mobile-cta a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            padding: 10px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--primary-deep), var(--primary));
+        }
+
+        .mobile-bottom-nav {
+            position: fixed;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 14px;
+            border: 1px solid rgba(52, 153, 212, 0.35);
+            background: rgba(6, 13, 28, 0.94);
+            backdrop-filter: blur(16px);
+            display: none;
+            z-index: 1250;
+            padding: 6px 5px;
+            box-shadow: 0 12px 22px rgba(0, 0, 0, 0.4);
+            overflow: visible;
+            transition: opacity 0.24s ease;
+            align-items: flex-end;
+            gap: 2px;
+            z-index: 1250;
+        }
+
+        .mobile-bottom-nav a {
+            flex: 1;
+            text-decoration: none;
+            color: rgba(219, 239, 255, 0.82);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            font-size: 0.62rem;
+            line-height: 1;
+            padding: 5px 3px;
+            border-radius: 10px;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+        }
+
+        .mobile-bottom-nav a i {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 0.82rem;
+            background: rgba(52, 153, 212, 0.14);
+            border: 1px solid rgba(103, 202, 255, 0.28);
+        }
+
+        .mobile-bottom-nav a.active {
+            color: #a9e4ff;
+            background: rgba(52, 153, 212, 0.14);
+        }
+
+        .mobile-bottom-nav a.nav-center {
+            flex: 0 0 62px;
+            width: 62px;
+            height: 62px;
+            transform: translateY(-10px);
+            position: relative;
+            z-index: 3;
+            border-radius: 50%;
+            background: linear-gradient(165deg, #1c4f97, #3499d4);
+            border: 2px solid rgba(183, 235, 255, 0.72);
+            box-shadow: 0 10px 20px rgba(52, 153, 212, 0.42);
+            color: #fff;
+            padding: 8px;
+        }
+
+        .mobile-bottom-nav a.nav-center i {
+            width: 28px;
+            height: 28px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .mobile-bottom-nav a.nav-center span {
+            font-size: 0.6rem;
+            margin-top: 1px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            right: 18px;
+            bottom: 146px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid rgba(52, 153, 212, 0.6);
+            background: rgba(5, 10, 21, 0.92);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: 0.25s ease;
+            z-index: 1201;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* General Section padding */
+        .section-padding { padding: 120px 0; }
+
+        section {
+            position: relative;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: min(820px, 85vw);
+            height: 1px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent, rgba(52, 153, 212, 0.35), transparent);
+            opacity: 0.45;
+            pointer-events: none;
+        }
+
+        .navbar.navbar-scrolled {
+            background: transparent !important;
+            border-bottom-color: transparent !important;
+            box-shadow: none;
+        }
+
+        .navbar.navbar-scrolled .nav-master {
+            border-color: rgba(114, 209, 255, 0.28);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.33), 0 0 20px rgba(52, 153, 212, 0.14);
+        }
+
+        @media (max-width: 991.98px) {
+            .section-padding { padding: 90px 0; }
+            .addx-card { padding: 28px; }
+            .vsl-wrapper { margin: 40px auto; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .hero { min-height: auto; padding-top: 120px; }
+            .hero .container { padding-top: 10px; }
+            .hero .display-3 { font-size: clamp(2rem, 8vw, 2.7rem); }
+            .hero .lead { font-size: 1rem; }
+            .navbar { padding: 10px 0 !important; }
+            .navbar .container { row-gap: 10px; }
+            .nav-master {
+                background: transparent;
+                border: 0;
+                box-shadow: none;
+                padding: 0;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                overflow: visible;
+            }
+            .nav-master::before { display: none; }
+            .navbar-brand-wrap { min-width: auto; padding-left: 0; }
+            .nav-links-wrap {
+                display: block;
+                width: 100%;
+                grid-column: 1 / -1;
+            }
+            .navbar-toggler {
+                border: 1px solid rgba(126, 217, 255, 0.36) !important;
+                border-radius: 10px;
+                padding: 6px 10px;
+                background: rgba(8, 17, 37, 0.66);
+            }
+            .navbar-collapse {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 10px;
+                background: rgba(6, 12, 24, 0.96);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 14px;
+                padding: 12px 14px;
+            }
+            .navbar-nav { width: 100%; }
+            .navbar-nav .nav-link {
+                display: block;
+                text-align: left;
+            }
+            .navbar-cta-desktop { display: none !important; }
+            .timeline-wrap::before { left: 16px; transform: none; }
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding: 0 0 22px 42px;
+            }
+            .timeline-item .timeline-dot {
+                left: 9px !important;
+                right: auto !important;
+            }
+            .roi-grid { grid-template-columns: 1fr; }
+            .mobile-cta { display: none !important; }
+            .mobile-bottom-nav { display: flex; }
+            body { padding-bottom: 108px; }
+            .section-lead-icon { width: 56px; height: 56px; border-radius: 14px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 18px; }
+            .shorts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 767.98px) {
+            .section-padding { padding: 78px 0; }
+            .hero-badge { font-size: 0.72rem; padding: 8px 16px; }
+            .hero-badge-row { margin-bottom: 18px; }
+            .addx-card { padding: 22px; }
+            .display-5 { font-size: clamp(1.55rem, 7vw, 2.15rem); }
+            #calendly .calendly-inline-widget { height: 560px !important; }
+            .portfolio-grid { grid-template-columns: 1fr; gap: 18px; }
+            .portfolio-content { padding: 14px 12px 12px; }
+            .portfolio-title { font-size: 0.88rem; }
+            .case-study-grid { grid-template-columns: 1fr; }
+            .packages-grid { grid-template-columns: 1fr; }
+            .guarantee-wrap { padding: 22px; }
+            .guarantee-points { grid-template-columns: 1fr; }
+            #book .addx-card.mx-auto { padding: 20px !important; }
+            #book .addx-card.text-start.mb-5 { padding: 14px !important; margin-bottom: 1.1rem !important; }
+            #book .roi-grid { gap: 10px; margin: 14px 0; }
+            #book .roi-input { padding: 9px 10px; font-size: 0.94rem; }
+            #book .roi-output { padding: 14px; }
+            #book .roi-output .d-flex { gap: 8px; }
+            #book .roi-output .d-flex span { font-size: 0.84rem; text-align: left; }
+            #book .roi-output .d-flex strong { font-size: 0.9rem; }
+            .shorts-grid { grid-template-columns: 1fr; }
+            .nav-master { border-radius: 12px; }
+        }
+
+        .cursor-dot,
+        .cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1600;
+            opacity: 0;
+            transition: opacity 0.24s ease;
+        }
+
+        .cursor-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #84deff;
+            box-shadow: 0 0 12px rgba(132, 222, 255, 0.65);
+        }
+
+        .cursor-ring {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid rgba(132, 222, 255, 0.55);
+            background: rgba(132, 222, 255, 0.05);
+            transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+        }
+
+        body.cursor-active .cursor-dot,
+        body.cursor-active .cursor-ring {
+            opacity: 1;
+        }
+
+        body.cursor-hover .cursor-ring {
+            width: 44px;
+            height: 44px;
+            border-color: rgba(132, 222, 255, 0.8);
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .cursor-dot,
+            .cursor-ring {
+                display: none;
+            }
+        }
+
+            /* Reduce expensive effects on mobile for smoother scrolling/rendering. */
+            .glowing-blob { filter: blur(82px); opacity: 0.45; }
+            .navbar.fixed-top {
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
+            }
+            .addx-card,
+            .timeline-card {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+        }
+
+        [data-aos] {
+            transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1) !important;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- ***** Preloader Start ***** -->
-    <!-- <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div> -->
-    <!-- ***** Preloader End ***** -->
 
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+    <div class="gradient-bg">
+        <div class="glowing-blob blob-1"></div>
+        <div class="glowing-blob blob-2"></div>
+        <div class="glowing-blob blob-3"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top" style="background: transparent; border-bottom: 0; padding: 14px 0;">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
-                            <img src="assets/images/logo-white.png" width="80px" alt="Softy Pinko" />
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="#portfolio">Portfolio</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#testimonials">Testimonials</a></li>
-                            <li><a href="#faq">FAQ</a></li>
-
-                            <a class="btn-getstarted ipbtnclas text-light" href="#contact-us">Lets work Together</a>
+            <div class="nav-master">
+                <div class="navbar-brand-wrap">
+                    <a class="navbar-brand text-white fw-bold mb-0" href="#" style="font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 0.5px;">KunioCreatives</a>
+                </div>
+                <button class="navbar-toggler border-0 d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+                </button>
+                <div class="nav-links-wrap">
+                    <div class="collapse navbar-collapse justify-content-center" id="mainNav">
+                        <ul class="navbar-nav gap-lg-4 gap-2">
+                            <li class="nav-item"><a class="nav-link nav-pill" href="#results">Results</a></li>
+                            <li class="nav-item"><a class="nav-link nav-pill" href="#how-it-works">How It Works</a></li>
+                            <li class="nav-item"><a class="nav-link nav-pill" href="#portfolio">Portfolio</a></li>
+                            <li class="nav-item"><a class="nav-link nav-pill" href="#faq">FAQ</a></li>
+                            <li class="nav-item d-lg-none mt-2"><a class="btn-glow w-100 text-center" href="#book">Book a Call</a></li>
                         </ul>
-                        <a class="menu-trigger">
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                    </div>
+                </div>
+                <div class="d-none d-lg-flex align-items-center navbar-cta-desktop">
+                    <a class="btn-glow" style="padding: 10px 28px; font-size: 0.85rem; white-space: nowrap;" href="#book">Book a Call</a>
                 </div>
             </div>
         </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
+    </nav>
 
-    <!-- ***** Welcome Area Start ***** -->
-    <div class="welcome-area" id="welcome">
-        <!-- ***** Header Text Start ***** -->
-        <div class="header-text">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="highlight-box">
-                            Looking for someone who can reduce your workload and deliver faster results?
-                        </div>
-                        <h1 class="text-light main-line">
-                            Helping you create videos that attract,<br>
-                            engage, and <span class="cunderline">convert</span>
-                        </h1>
-                        <div class="container text-center mt-5 mb-5">
-                            <div class="row justify-content-center">
-                                <div class="col-12">
+    <section class="hero text-center text-white">
+        <div class="container">
+            <div class="hero-badge-row">
+                <div class="hero-mini-note"><i class="fa-solid fa-bolt"></i> Edited And Delivered In 48 Hours</div>
+                <div class="hero-badge">Top Rated Plus on Upwork • 100% Success Score</div>
+            </div>
 
+            <h1 class="display-3 fw-bold mb-4" style="line-height: 1.2; font-family: var(--font-body);">
+                A Stress-Free, Performance-Driven <br>
+                <span class="text-gradient">Editing System for Established YouTube Creators</span>
+            </h1>
 
-                                    <iframe src="https://www.youtube.com/embed/6QLWOML3QJA" title="YouTube video player"
-                                        class="embed-responsive-item vsl-hero" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
-                          encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="lead mb-5 opacity-75 mx-auto" style="max-width: 700px;">
+                Eliminate revision cycles, remove deadline stress, and publish videos engineered for retention and long-term growth.
+            </p>
 
+            <div class="vsl-wrapper">
+                <div class="vsl-inner">
+                    <iframe src="https://www.youtube.com/embed/6QLWOML3QJA?rel=0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <a href="#book" class="btn-glow mt-2 mb-4" style="font-size: 1.2rem; padding: 18px 50px;">Book a Call</a>
+            <p class="mt-3" style="font-size: 0.9rem; letter-spacing: 2px; opacity: 0.85;">FEWER REVISIONS • PREDICTABLE DEADLINES • RETENTION-FOCUSED STRUCTURE</p>
+
+            <div class="trust-strip">
+                <div class="trust-chip">Top Rated Plus</div>
+                <div class="trust-chip">100% Success Score</div>
+                <div class="trust-chip">Retention-First Editing</div>
+                <div class="trust-chip">2-3 Day Turnaround</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="section-lead-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h2 class="display-5 mb-4 text-gradient">Tired of Managing Editors?</h2>
+                    <div class="addx-card mt-5 text-start text-lg-center" style="line-height: 1.6;">
+                        <p class="fs-5 opacity-75 mb-3">You shouldn't have to chase deadlines, re-explain your vision, or fix pacing yourself. Yet every upload feels heavier than it should.</p>
+                        <p class="fs-5 opacity-75 mb-3">First drafts miss the mark.</p>
+                        <p class="fs-5 opacity-75 mb-3">Revisions drag on.</p>
+                        <p class="fs-5 opacity-75 mb-3">You review everything line by line before publishing.</p>
+                        <p class="fs-5 opacity-75 mb-3">Editing was supposed to create leverage.</p>
+                        <p class="fs-5 opacity-75 mb-0">Instead, it became another responsibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POSITIONING SHIFT -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="section-lead-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h2 class="display-5 mb-4 text-gradient">This Isn't Just Editing — It's a Stress-Free Growth System</h2>
+                    <div class="addx-card mt-5 text-start text-lg-center" style="line-height: 1.6;">
+                        <p class="fs-5 opacity-75 mb-3">You send the footage.</p>
+                        <p class="fs-5 opacity-75 mb-3">I handle structure, pacing, and execution.</p>
+                        <p class="fs-5 opacity-75 mb-4">You receive polished, ready-to-publish videos — without micromanaging.</p>
+                        <p class="fs-5 opacity-75 mb-0">Every upload is built to grow your channel without adding work to your plate.</p>
+                    </div>
+                    <p class="mt-5" style="font-size: 0.9rem; letter-spacing: 2px; opacity: 0.8;">FEWER REVISIONS • PREDICTABLE DEADLINES • GROWTH-FOCUSED STRUCTURE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS / SOCIAL PROOF -->
+    <section class="section-padding" id="results">
+        <div class="container">
+            <div class="section-lead-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h2 class="text-center mb-4 pb-2">Results Speak <span class="text-gradient">for Themselves</span></h2>
+            <p class="text-center opacity-75 mb-5 mx-auto" style="max-width: 700px;">Creators upgraded from chaotic editing to a streamlined, growth-focused workflow — and saw measurable improvements.</p>
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="addx-card h-100">
+                        <h4 class="mb-3 text-white">Luke Robins</h4>
+                        <p class="text-gradient fw-bold mb-3">139K+ views on first video • Went full-time on YouTube</p>
+                        <p class="opacity-75 fst-italic">"I've worked with Aziz for over a year — from TikTok shorts to YouTube videos. The results have been outstanding thanks to his skill and reliability."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="addx-card h-100">
+                        <h4 class="mb-3 text-white">Ethan</h4>
+                        <p class="text-gradient fw-bold mb-3">Consistently meets tight deadlines for time-sensitive content</p>
+                        <p class="opacity-75 fst-italic">"One thing I really love about Aziz is that he always delivers on deadlines. Sometimes I have time-sensitive information that needs to go out fast, and working with him makes that easy."</p>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="addx-card h-100">
+                        <h4 class="mb-3 text-white">Dr. Aziz</h4>
+                        <p class="text-gradient fw-bold mb-3">New leads every week • Tested 30+ editors</p>
+                        <p class="opacity-75 fst-italic">"I tested over 30 editors, and Aziz stood out with his graphics, animations, and pacing. Beyond skill, he genuinely cares about my success."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#book" class="btn-glow">Book a Call</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="how-it-works">
+        <div class="container text-center">
+            <div class="section-lead-icon"><i class="fa-solid fa-diagram-project"></i></div>
+            <h2 class="mb-5 text-gradient">How It Works</h2>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="addx-card text-center">
+                        <span class="mini-icon"><i class="fa-solid fa-compass"></i></span>
+                        <h1 class="text-gradient opacity-50 mb-3">01</h1>
+                        <p class="mb-0 fw-bold" style="line-height: 1.7;">We align on your channel goals and direction</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="addx-card text-center">
+                        <span class="mini-icon"><i class="fa-solid fa-folder-open"></i></span>
+                        <h1 class="text-gradient opacity-50 mb-3">02</h1>
+                        <p class="mb-0 fw-bold" style="line-height: 1.7;">You submit footage and context</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="addx-card text-center">
+                        <span class="mini-icon"><i class="fa-solid fa-film"></i></span>
+                        <h1 class="text-gradient opacity-50 mb-3">03</h1>
+                        <p class="mb-0 fw-bold" style="line-height: 1.7;">You receive a structured first draft within the agreed timeline</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="addx-card text-center">
+                        <span class="mini-icon"><i class="fa-solid fa-rocket"></i></span>
+                        <h1 class="text-gradient opacity-50 mb-3">04</h1>
+                        <p class="mb-0 fw-bold" style="line-height: 1.7;">Minor refinements if needed — then publish</p>
+                    </div>
+                </div>
+            </div>
+            <p class="fw-bold fs-5 mt-5 opacity-75">Simple. Predictable. Scalable.</p>
+            <a href="#book" class="btn-glow mt-3">Book a Call</a>
+        </div>
+    </section>
+
+    <section class="section-padding" id="audit-snapshot" style="background: rgba(9, 20, 44, 0.45);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up">
+                    <div class="section-lead-icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h2 class="text-center mb-3">Channel Audit <span class="text-gradient">Snapshot</span></h2>
+                    <p class="text-center opacity-75 mb-5">How top-performing videos are diagnosed before editing starts.</p>
+                    <div class="addx-card">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="metric-card">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <strong>Hook Strength</strong>
+                                        <span class="metric-label">0%</span>
+                                    </div>
+                                    <div class="metric-track"><div class="metric-fill" data-progress="88"></div></div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <strong>Pacing Consistency</strong>
+                                        <span class="metric-label">0%</span>
+                                    </div>
+                                    <div class="metric-track"><div class="metric-fill" data-progress="84"></div></div>
+                                </div>
+                                <div class="metric-card mb-0">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <strong>Retention Architecture</strong>
+                                        <span class="metric-label">0%</span>
+                                    </div>
+                                    <div class="metric-track"><div class="metric-fill" data-progress="91"></div></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mt-4 mt-lg-0">
+                                <div class="h-100 d-flex flex-column justify-content-center">
+                                    <h4 class="mb-3 text-gradient">Outcome Focused Workflow</h4>
+                                    <p class="opacity-75 mb-3">Every draft is evaluated against clear performance levers before final delivery.</p>
+                                    <p class="opacity-75 mb-2">- Better opening momentum for first 30 seconds</p>
+                                    <p class="opacity-75 mb-2">- Cleaner scene transitions to reduce drop-offs</p>
+                                    <p class="opacity-75 mb-0">- Intentional retention beats for long-form structure</p>
                                 </div>
                             </div>
                         </div>
-
-                        <a href="#features" class="btn-getstarted mt-4" data-aos="fade-right" data-aos-delay="100">Lets
-                            Work Together</a>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ***** Header Text End ***** -->
-    </div>
-    <!-- ***** Welcome Area End ***** -->
-
-    <!-- ***** Features Small Start ***** -->
-    <section class="section home-feature">
-        <div class="container text-center p-4">
-            <div class="row justify-content-center mt-4">
-                <div class="col-lg-8 m-4" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
-                    <h2 class="hbold"><span class="mb-4">Tired of slow turnarounds?</span> </h2>
-                    <h2 class="hbold"><span class="rounded mt-2 p-2">Dealing with endless revisions?</span></h2>
-                    <span class="spanbold cunderline">We can help</span>
-                    <p class="lead mt-3" style="text-align: justify;">We help creators who are fed up with videos that
-                        don't hit
-                        the mark. As your
-                        partner, we study the top creators in your niche, watch every viral video, and figure out what's
-                        working for your competitors. </p>
-                    <p class="lead mt-3" style="text-align: justify;">Then we blend the best moves from the top five
-                        creators,
-                        giving
-                        you a fresh edge so you can rise up and become the next giant in your space.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ***** Features Small End ***** -->
-    <section id="clients" class="clients section">
+    <section class="section-padding" id="workflow-timeline">
+        <div class="container">
+            <div class="section-lead-icon"><i class="fa-solid fa-timeline"></i></div>
+            <h2 class="text-center mb-3">Editing System <span class="text-gradient">Timeline</span></h2>
+            <p class="text-center opacity-75 mb-5">From footage handoff to publish-ready delivery, every step is structured.</p>
+            <div class="timeline-wrap" data-aos="fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <small class="text-gradient fw-bold">DAY 0</small>
+                        <h5 class="mt-2 mb-2">Raw Footage Intake</h5>
+                        <p class="opacity-75 mb-0">Footage, references, and direction are mapped into a clear narrative brief.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <small class="text-gradient fw-bold">DAY 1</small>
+                        <h5 class="mt-2 mb-2">Story Spine + Structure</h5>
+                        <p class="opacity-75 mb-0">The edit is built around hook, pace, and retention checkpoints.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <small class="text-gradient fw-bold">DAY 2</small>
+                        <h5 class="mt-2 mb-2">Polish + Visual Dynamics</h5>
+                        <p class="opacity-75 mb-0">Graphics, transitions, and rhythm improvements are layered for clarity and flow.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <small class="text-gradient fw-bold">DAY 2-3</small>
+                        <h5 class="mt-2 mb-2">Delivery + Refinements</h5>
+                        <p class="opacity-75 mb-0">Final handoff with minor refinements if needed, then ready to publish.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO THIS IS FOR -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="section-lead-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+                    <h2 class="display-5 mb-5 text-gradient">Who This Is For</h2>
+                    <div class="addx-card mb-4">
+                        <h4 class="text-white mb-4">Ideal Clients</h4>
+                        <p class="fs-5 opacity-75 mb-2">✔ Creators uploading at least 1 long-form video per week</p>
+                        <p class="fs-5 opacity-75 mb-2">✔ Focused on long-term channel growth</p>
+                        <p class="fs-5 opacity-75 mb-0">✔ Ready to stop managing editors</p>
+                    </div>
+                    <div style="width: 60%; height: 1px; background: rgba(52, 153, 212, 0.4); margin: 30px auto;"></div>
+                    <div class="addx-card mt-4">
+                        <h4 class="text-white mb-4">Not For</h4>
+                        <p class="fs-5 opacity-75 mb-2">✘ Brand-new channels</p>
+                        <p class="fs-5 opacity-75 mb-2">✘ Budget-only shoppers</p>
+                        <p class="fs-5 opacity-75 mb-0">✘ One-off or occasional uploads</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY THIS WORKFLOW WORKS BETTER -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="section-lead-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h2 class="display-5 mb-4 text-gradient">Why This Workflow Works Better Than Generic Editors</h2>
+                    <p class="fs-5 opacity-75 mb-5">Built for consistency, growth, and stress-free publishing.</p>
+                    <div style="width: 60%; height: 1px; background: rgba(52, 153, 212, 0.4); margin: 0 auto 40px;"></div>
+                    <div class="addx-card text-start text-lg-center">
+                        <p class="fs-5 opacity-75 mb-3">✔ Retention-driven structure inspired by top creators</p>
+                        <p class="fs-5 opacity-75 mb-3">✔ Reliable, on-time delivery</p>
+                        <p class="fs-5 opacity-75 mb-0">✔ Videos engineered for growth — not just "cut and deliver"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-padding" id="faq" style="background: rgba(19, 42, 94, 0.3);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <div class="section-lead-icon"><i class="fa-solid fa-circle-question"></i></div>
+                    <h2 class="display-5 mb-5 text-gradient">Frequently Asked Questions</h2>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header" id="faqHeadOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+                                    Do you offer trial videos?
+                                    <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                                </button>
+                            </h2>
+                            <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">We don't offer free trials, but you can start with a single paid video to experience the workflow and quality.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header" id="faqHeadTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                                    How long does editing take?
+                                    <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                                </button>
+                            </h2>
+                            <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Turnaround depends on your needs and package, but most videos are delivered within 2-3 days.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header" id="faqHeadThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                                    Do you offer revisions?
+                                    <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                                </button>
+                            </h2>
+                            <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeadThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Yes. Your first video includes a satisfaction guarantee. If it's not an upgrade from your previous editor, I'll revise it until it is, or we don't continue.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header" id="faqHeadFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+                                    What if I don't like the final result?
+                                    <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                                </button>
+                            </h2>
+                            <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqHeadFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">You're protected by the First-Video Satisfaction Guarantee.</div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header" id="faqHeadFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
+                                    Why not hire your own editor?
+                                    <i class="fa-solid fa-chevron-down faq-chevron"></i>
+                                </button>
+                            </h2>
+                            <div id="faqFive" class="accordion-collapse collapse" aria-labelledby="faqHeadFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">Managing an in-house editor requires oversight and time. This system removes that burden while keeping your content structured for growth.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="portfolio" style="background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);">
+        <div class="container">
+            <div class="section-lead-icon"><i class="fa-solid fa-photo-film"></i></div>
+            <h2 class="text-center mb-5">Recent <span class="text-gradient">Work</span></h2>
+            <p class="portfolio-section-note">A curated selection of edits built for retention, stronger watch-time curves, and measurable channel momentum.</p>
+            <div class="case-study-grid portfolio-featured-row">
+                <article class="addx-card h-100">
+                    <div class="case-meta">
+                        <span class="tag-pill tag-cyan">Business Channel</span>
+                        <span class="tag-pill tag-green">Long Form</span>
+                    </div>
+                    <h4 class="mb-3">From Slow Openings to Strong Hook Retention</h4>
+                    <p class="opacity-75 mb-2"><strong>Problem:</strong> Strong ideas, but weak first 30 seconds and inconsistent pacing.</p>
+                    <p class="opacity-75 mb-2"><strong>What Changed:</strong> Hook restructuring, cleaner pattern interrupts, tighter narrative rhythm.</p>
+                    <div class="case-result">Result: Better minute-one hold and stronger watch-time trend.</div>
+                </article>
+                <article class="addx-card h-100">
+                    <div class="case-meta">
+                        <span class="tag-pill tag-violet">Education</span>
+                        <span class="tag-pill tag-green">Consistency</span>
+                    </div>
+                    <h4 class="mb-3">From Delivery Stress to Predictable Publishing</h4>
+                    <p class="opacity-75 mb-2"><strong>Problem:</strong> Missed deadlines and heavy revision loops.</p>
+                    <p class="opacity-75 mb-2"><strong>What Changed:</strong> Locked workflow checkpoints, clearer brief, faster refinement cycle.</p>
+                    <div class="case-result">Result: Faster delivery with less back-and-forth and higher consistency.</div>
+                </article>
+            </div>
+            <div class="portfolio-grid" data-aos="fade-up">
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="_xjg5mOf-m8" data-video-title="High-retention storytelling edit with strategic hook pacing.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/_xjg5mOf-m8/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">High-retention storytelling edit with strategic hook pacing.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Long Form</span><span class="tag-pill tag-green">Retention</span><span class="tag-pill tag-violet">Growth</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">+139K Views</span><span class="stat-pill">CTR Lift</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="ygdqm4QrfdM" data-video-title="Education format optimized for clear information flow and watch-time.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/ygdqm4QrfdM/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Education format optimized for clear information flow and watch-time.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Education</span><span class="tag-pill tag-green">Clarity</span><span class="tag-pill tag-violet">Pacing</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">2-3 Day Delivery</span><span class="stat-pill">Strong Avg View Duration</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="8S1l53oGkjc" data-video-title="Authority-driven talking-head edit with cleaner momentum transitions.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/8S1l53oGkjc/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Authority-driven talking-head edit with cleaner momentum transitions.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Personal Brand</span><span class="tag-pill tag-green">Hook</span><span class="tag-pill tag-violet">Momentum</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">Higher Session Time</span><span class="stat-pill">Repeatable Format</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="rpaExRYwCjk" data-video-title="Fast-pace visual narrative built to reduce early drop-offs.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/rpaExRYwCjk/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Fast-pace visual narrative built to reduce early drop-offs.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Narrative</span><span class="tag-pill tag-green">Retention Arc</span><span class="tag-pill tag-violet">Visual FX</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">Drop-off Reduced</span><span class="stat-pill">Stronger Open</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="K-vmuCx5k8I" data-video-title="Long-form strategy piece with clean chapter rhythm and emphasis cuts.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/K-vmuCx5k8I/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Long-form strategy piece with clean chapter rhythm and emphasis cuts.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Strategy</span><span class="tag-pill tag-green">Structure</span><span class="tag-pill tag-violet">Authority</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">Improved Viewer Flow</span><span class="stat-pill">Consistent Upload Quality</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="NGGvmLhH2wo" data-video-title="Conversion-focused edit balancing insight depth with visual energy.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/NGGvmLhH2wo/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Conversion-focused edit balancing insight depth with visual energy.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Conversion</span><span class="tag-pill tag-green">Storyline</span><span class="tag-pill tag-violet">Audience Fit</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">Lead Quality Up</span><span class="stat-pill">On-Time Delivery</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="WovT1fJaI_Q" data-video-title="Creator growth edit with stronger narrative anchors and retention beats.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/WovT1fJaI_Q/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Creator growth edit with stronger narrative anchors and retention beats.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Creator Growth</span><span class="tag-pill tag-green">Retention Beats</span><span class="tag-pill tag-violet">Brand Voice</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">Increased Return Viewers</span><span class="stat-pill">Sharper Story Arc</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="x4L09yYeotU" data-video-title="Educational breakdown with modern pacing and concise visual callouts.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/x4L09yYeotU/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Educational breakdown with modern pacing and concise visual callouts.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Explainer</span><span class="tag-pill tag-green">Visual Clarity</span><span class="tag-pill tag-violet">Watch-Time</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">Higher Completion Rate</span><span class="stat-pill">Cleaner Delivery</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="cVLPYIXujSk" data-video-title="Punchy social-proof style edit built for fast comprehension and trust.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/cVLPYIXujSk/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Punchy social-proof style edit built for fast comprehension and trust.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Case Study</span><span class="tag-pill tag-green">Trust</span><span class="tag-pill tag-violet">Proof</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">Credibility Lift</span><span class="stat-pill">Audience Alignment</span></div>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="DJIFEoV2mrc" data-video-title="Result-driven long-form production with cleaner information hierarchy.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/DJIFEoV2mrc/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                    <div class="portfolio-content">
+                        <p class="portfolio-title">Result-driven long-form production with cleaner information hierarchy.</p>
+                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Long Form</span><span class="tag-pill tag-green">Hierarchy</span><span class="tag-pill tag-violet">Engagement</span></div>
+                        <div class="portfolio-stats"><span class="stat-pill">More Watch Minutes</span><span class="stat-pill">Publish Ready</span></div>
+                    </div>
+                </article>
+                </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="short-form" style="background: rgba(7, 16, 34, 0.5);">
+        <div class="container">
+            <div class="section-lead-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h2 class="text-center mb-3">Short Form <span class="text-gradient">Videos</span></h2>
+            <p class="portfolio-section-note">Reels, Shorts, TikToks, and LinkedIn clips designed for fast hooks and strong shareability.</p>
+            <div class="shorts-grid">
+                <button class="shorts-card portfolio-trigger" type="button" data-video-id="rpaExRYwCjk" data-video-title="Fast-pace short-form cut built to reduce early drop-offs.">
+                    <div class="shorts-thumb">
+                        <img src="https://i.ytimg.com/vi/rpaExRYwCjk/hqdefault.jpg" alt="Short form video thumbnail" loading="lazy">
+                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
+                    </div>
+                    <div class="shorts-content">
+                        <p class="shorts-title">Fast-pace short-form cut built to reduce early drop-offs.</p>
+                        <div class="shorts-meta"><span class="tag-pill tag-cyan">Shorts</span><span class="tag-pill tag-green">Hook</span></div>
+                    </div>
+                </button>
+                <button class="shorts-card portfolio-trigger" type="button" data-video-id="cVLPYIXujSk" data-video-title="Punchy proof-style short made for quick trust and saves.">
+                    <div class="shorts-thumb">
+                        <img src="https://i.ytimg.com/vi/cVLPYIXujSk/hqdefault.jpg" alt="Short form video thumbnail" loading="lazy">
+                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
+                    </div>
+                    <div class="shorts-content">
+                        <p class="shorts-title">Punchy proof-style short made for quick trust and saves.</p>
+                        <div class="shorts-meta"><span class="tag-pill tag-violet">Reels</span><span class="tag-pill tag-green">Engagement</span></div>
+                    </div>
+                </button>
+                <button class="shorts-card portfolio-trigger" type="button" data-video-id="WovT1fJaI_Q" data-video-title="Creator growth short with tighter anchors and retention beats.">
+                    <div class="shorts-thumb">
+                        <img src="https://i.ytimg.com/vi/WovT1fJaI_Q/hqdefault.jpg" alt="Short form video thumbnail" loading="lazy">
+                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
+                    </div>
+                    <div class="shorts-content">
+                        <p class="shorts-title">Creator growth short with tighter anchors and retention beats.</p>
+                        <div class="shorts-meta"><span class="tag-pill tag-cyan">TikTok</span><span class="tag-pill tag-green">Retention</span></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding text-center" id="book" style="background: rgba(19, 42, 94, 0.4);">
         <div class="container" data-aos="fade-up">
-            <h1 class="text-center m-4 hbold">Trusted By</h1>
-            <div class="scrolling-wrapper">
+            <div class="addx-card mx-auto" style="max-width: 800px; padding: 60px;">
+                <div class="section-lead-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                <h2 class="mb-4">Ready to Build a <span class="text-gradient">Stress-Free Editing System?</span></h2>
+                <p class="opacity-75 mb-5">Limited spots available — quality over quantity. Start with one video. No long-term commitment required.</p>
 
-                <div class="scrolling-content">
-                    <div class="client-logo">
-                        <img src="assets/images/client-1.png" class="img-fluid" alt="">
+                <div class="addx-card text-start mb-5" style="padding: 28px;">
+                    <h4 class="mb-3">ROI Mini Calculator</h4>
+                    <p class="opacity-75 mb-4">Estimate potential monthly lift from stronger edits and retention.</p>
+                    <div class="roi-grid">
+                        <div>
+                            <label class="d-block mb-2 opacity-75" for="videosPerMonth">Videos / Month</label>
+                            <input id="videosPerMonth" class="roi-input" type="number" min="1" value="4" />
+                        </div>
+                        <div>
+                            <label class="d-block mb-2 opacity-75" for="avgViews">Avg Views / Video</label>
+                            <input id="avgViews" class="roi-input" type="number" min="100" value="25000" />
+                        </div>
+                        <div>
+                            <label class="d-block mb-2 opacity-75" for="retentionLift">Retention Lift (%)</label>
+                            <input id="retentionLift" class="roi-input" type="number" min="1" max="100" value="12" />
+                        </div>
+                        <div>
+                            <label class="d-block mb-2 opacity-75" for="conversionValue">Lead Value ($)</label>
+                            <input id="conversionValue" class="roi-input" type="number" min="1" value="120" />
+                        </div>
                     </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-2.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-3.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-4.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-5.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-6.png" class="img-fluid" alt="">
-                    </div>
-
-                    <!-- Duplicate for seamless infinite scrolling -->
-                    <div class="client-logo">
-                        <img src="assets/images/client-1.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-2.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-3.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-4.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-5.png" class="img-fluid" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="assets/images/client-6.png" class="img-fluid" alt="">
+                    <div class="roi-output">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="opacity-75">Estimated Additional Monthly Views</span>
+                            <strong id="roiViews" class="text-gradient">0</strong>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="opacity-75">Estimated Monthly Value Signal</span>
+                            <strong id="roiValue" class="text-gradient">$0</strong>
+                        </div>
                     </div>
                 </div>
 
+                <a href="#calendly" class="btn-glow mb-5" style="font-size: 1.1rem; padding: 16px 45px;">Book a Call →</a>
+
+                <div style="width: 60%; height: 1px; background: rgba(52, 153, 212, 0.3); margin: 30px auto;"></div>
+
+                <h4 class="text-white mb-4 mt-4">What Happens Next?</h4>
+                <p class="opacity-75 mb-3">After booking, you'll complete a short intake form about your channel and workflow.</p>
+                <p class="opacity-75 mb-3">On the call, we will:</p>
+                <p class="opacity-75 mb-2">• Review your channel</p>
+                <p class="opacity-75 mb-2">• Identify retention gaps</p>
+                <p class="opacity-75 mb-4">• Determine if this system is the right fit</p>
+                <p class="opacity-75 mb-5">If it makes sense, we start with one video.</p>
+
+                <div id="calendly" style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/theiqbal111" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                </div>
             </div>
         </div>
     </section>
-    <section class="section myip-bg" id="results">
+
+    <section class="section-padding" id="service-packages" style="background: rgba(6, 14, 30, 0.5);">
         <div class="container">
-            <h2 class="text-center mb-3 text-light hbold"><strong>Results Speak for Themselves</strong></h2>
-
-            <div class="row">
-                <div class="col-md-6 p-4 d-flex flex-column justify-content-center align-items-center">
-                    <div class="result-item-top mb-4 text-center">
-                        <h3 class="mb-3 text-light">Luke Robins</h3>
-                        <img src="assets/images/testimonials-1.jpg" alt="Luke Robins" class="img-fluid rounded mb-3">
-                        <ul class="list-unstyled mt-3 text-light">
-                            <li>139K+ views on his first video</li>
-                            <li>Went full-time on YouTube</li>
-                        </ul>
-                    </div>
-                    <div class="result-item text-center">
-                        <!-- <h3 class="mb-3 text-light text-center">Luke Robins</h3> -->
-                        <div class="testimonial-video ratio ratio-16x9">
-                            <iframe class="vsl-result" src="https://www.youtube.com/embed/OHz0xIR8uwI"
-                                allowfullscreen></iframe>
-                        </div>
-
-                        <blockquote class="mt-3 text-light fst-italic p-4 mb-3"><i>
-                                "I've worked with Aziz for over a year—starting
-                                with TikTok shorts and then moving on to YouTube videos. The results have been
-                                outstanding
-                                thanks to his exceptional skill and reliability."
-                            </i></blockquote>
-                    </div>
-                </div>
-
-                <div class="col-md-6 p-4 d-flex flex-column justify-content-center align-items-center">
-                    <div class="result-item-top mb-4 text-center">
-                        <h3 class="mb-3 text-light">Dr. Aziz</h3>
-                        <img src="assets/images/testimonials-5.jpg" alt="Dr. Aziz" class="img-fluid rounded mb-3">
-                        <ul class="list-unstyled mt-3 text-light">
-                            <li>Getting new leads every week</li>
-                            <li>Tested 30+ editors</li>
-                        </ul>
-                    </div>
-                    <div class="result-item text-center">
-                        <!-- <h3 class="mb-3 text-light text-center">Dr. Aziz</h3> -->
-                        <div class="testimonial-video ratio ratio-16x9">
-                            <iframe class="vsl-result" src="https://www.youtube.com/embed/OHz0xIR8uwI"
-                                allowfullscreen></iframe>
-                        </div>
-
-                        <blockquote class="mt-3 text-light fst-italic p-4 "><i>
-                                "I tested over 30 editors, and Aziz stood out
-                                with his exceptional graphics, animations, and pacing. Beyond his editing skills, he's a
-                                pleasure to work with—taking on bonus projects, delivering quickly, and truly caring
-                                about
-                                my success."
-                            </i></blockquote>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- <p class="text-center text-light fs-5 mt-4"><strong>Ready to be our next success story?</strong> </p> -->
-        </div>
-    </section>
-    <section id="portfolio" class="portfolio section ">
-
-        <!-- Section Title -->
-        <div class="container section-title mb-4" data-aos="fade-up">
-            <h2 class="hbold text-center">Portfolio</h2>
-            <p class="text-center">See My Work in Action</p>
-        </div><!-- End Section Title -->
-
-        <div class="container-fluid mt-3">
-            <div class="isotope-layout" data-default-filter=".filter-talking" data-layout="masonry"
-                data-sort="original-order">
-
-                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-                    <!-- Active class on Talking Head -->
-                    <li data-filter=".filter-talking" class="filter-active">Talking Head</li>
-                    <li data-filter=".filter-shorts">Shorts / Reels</li>
-                    <li data-filter=".filter-podcast">Podcast</li>
-                    <li data-filter=".filter-ads">Ads</li>
-                    <li data-filter=".filter-faceless">Faceless</li>
-                    <li data-filter=".filter-entertainment">Entertainment Videos</li>
-                </ul>
-
-                <div class="row g-0 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-                    <!-- Talking Head -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/Iwb3ZZz1jCk" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/G1Lyr8F2eIU" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/7fiBg0YNViY" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/SKE0Bf3mmRU" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/ikWaIvQwxIg" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/dfzrQJTCK7o" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/NGGvmLhH2wo" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/TuXkRxc2yfA" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/8S1l53oGkjc" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/WovT1fJaI_Q" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/x4L09yYeotU" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/_xjg5mOf-m8" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/nmxqtjeesnM" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/rpaExRYwCjk" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-talking">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/K-vmuCx5k8I" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <!-- Shorts/Reels -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-shorts">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/d6IYk1ul_-k" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-shorts">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/rv18ITuV-yY" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-shorts">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/4kDESDXRz2k" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-shorts">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/qTvmcLSABxA" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-shorts">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/sriSo2A8W7c" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-shorts">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/jq9Sg5cUlmc" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <!-- Entertainment -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-entertainment">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/FoJIm1slzEo" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-entertainment">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/dARtcG5DFkY" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <!-- Faceless -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/v4hXF-eTCAs" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/_J88d1cXTio" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/gcx2jMbBGY4" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/zsb_I1zdQLU" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/gFcaULkwpUU" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/LBazT4tO7Lc" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/yCnZcECO8u0" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-faceless">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/uTKoIda9TOc" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <!-- Ads -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/VDzHB93GZCY" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/7sm3iPJAYGw" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/wZWO9IJYiPE" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/59mBOvSq0Nw" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/zebfqnedfHA" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/GPLvDsZKbGs" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/_RCKNaTEwF8" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-ads">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/1S5wwyBO0WE" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                    <!-- Podcast -->
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-podcast">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/XikIr0kedY8" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-podcast">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/3Of6awo9PXo" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-podcast">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/AROECehq9eo" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-podcast">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/0LqV4nyNW4I" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-podcast">
-                        <div class="portfolio-content h-100">
-                            <iframe src="https://www.youtube.com/embed/FXH6243nLRI" frameborder="0"
-                                allowfullscreen></iframe>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </section><!-- /Portfolio Section -->
-    <!-- ***** Features Big Item Start ***** -->
-    <section class="py-5 myip-bg" id="process">
-        <div class="container">
-            <h2 class="text-center text-light mb-5 hbold">How It Works</h2>
-            <p class="text-center text-light mb-5">Step-by-Step Process</p>
-            <div class="row g-4 text-center">
-                <div class="col-md-3">
-                    <div class="step-card card">
-                        <div class="step-number">1</div>
-                        <h5>Apply For A Free Call Or Email Us Directly</h5>
-                        <p>We analyze your niche and understand your content goals.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="step-card card">
-                        <div class="step-number">2</div>
-                        <h5>We Craft Your First Video Draft</h5>
-                        <p>Based on insights, we create a highly engaging video aligned with your vision.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="step-card card">
-                        <div class="step-number">3</div>
-                        <h5>Refinements & Finalization</h5>
-                        <p>Multiple feedback rounds until the video meets your expectations and industry standards.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="step-card card">
-                        <div class="step-number">4</div>
-                        <h5>Consistent Video Style Development</h5>
-                        <p>Over time, we establish a unique & recognizable style for your brand.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-5">
-                <button class="btn btn-lg px-5 bg-light">Let's Work Together</button>
-            </div>
-        </div>
-    </section>
-    <section id="about" class="about section">
-
-        <!-- Section Title -->
-        <div class="text-center mb-5">
-            <h2 class="fw-bold text-center hbold">Personal Introduction</h2>
-            <p class="text-center">From Meme Edits to a Top Rated Plus Freelancer</p>
-        </div>
-
-        <div class="container" data-aos="fade-up">
-            <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
-                <div class="col-lg-7 p-4 justify-content-center">
-                    <h3 class="fw-bold text-center hbold">About Me</h3>
-                    <p class="">Starting on a low-end device editing PUBG memes, I turned my passion into a
-                        full-time freelance career...</p>
-                    <ul class="list-unstyled text-left">
-                        <li>✔ Top Rated Plus on Upwork (Top 3%)</li>
-                        <li>✔ 500+ Videos Edited</li>
-                        <li>✔ Retention-Focused Editing</li>
+            <div class="section-lead-icon"><i class="fa-solid fa-box-open"></i></div>
+            <h2 class="text-center mb-3">Service <span class="text-gradient">Packages</span></h2>
+            <p class="portfolio-section-note">Choose your stage and scale as your channel grows.</p>
+            <div class="packages-grid">
+                <article class="package-card">
+                    <h4>Starter</h4>
+                    <p class="package-price">1 Video</p>
+                    <p class="opacity-75 mb-0">Perfect to test quality and workflow with zero long-term pressure.</p>
+                    <ul class="package-list">
+                        <li>One long-form edit</li>
+                        <li>Retention-focused pacing pass</li>
+                        <li>Minor revisions included</li>
+                        <li>Clear delivery timeline</li>
                     </ul>
-                    <h4>Who I Am</h4>
-                    <p>I started my journey on a low-end device editing PUBG memes, which eventually transformed into a
-                        full-time freelance career. Through determination and continuous learning, I've turned my
-                        passion into a
-                        profession.</p>
-                    <h4>Experience & Expertise</h4>
-                    <p>Proudly recognized as Top Rated Plus on Upwork, placing in the Top 3% of freelancers. This
-                        reflects my
-                        commitment to excellence and client satisfaction in every project I undertake.</p>
-                    <h4>Why I Started This Agency</h4>
-                    <p>My passion for video editing and the desire to help creators express their stories is the driving
-                        force
-                        behind this agency. I believe in empowering creators with high-quality, impactful content.</p>
-                    <h4>Mission</h4>
-                    <p>Our mission is to help creators stand out and grow with professional, retention-focused editing.
-                        We aim
-                        to turn your vision into reality with engaging and impactful videos.</p>
-
-                </div>
-                <div class="col-lg-5 justify-content-center">
-                    <div class="justify-content-center">
-                        <img src="assets/images/about.jpg" class="img-fluid mx-auto" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </section><!-- /About Section -->
-
-    <section id="whatsholding" class="section bg-light py-5">
-
-        <div class="container section-title mb-4" data-aos="fade-up" style="max-width: 700px;margin: auto;">
-            <h3 class="fw-bold text-center mb-3">What’s Holding You Back <br> from Explosive Growth?</h3>
-
-            <div class="row g-4 mt-4">
-                <div class="col-12">
-                    <div class="card shadow-sm p-4 rounded m-2">
-                        <div class="d-flex">
-                            <i class="fa mx-3 fa-envelope fa-2x"></i>
-                            <div class="div">
-                                <h5 class="mb-2 text-start">Reach Out to Us</h5>
-                                <p class="text-muted">Email us to find out how you can be the next big giant.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card shadow-sm p-4 rounded m-2">
-                        <div class="d-flex">
-                            <!-- Corrected icon name -->
-                            <i class="fa mx-3 fa-line-chart fa-2x"></i>
-                            <div class="div">
-                                <h5 class="mb-2 text-start">Breakthrough Insights</h5>
-                                <p class="text-muted">Discover what’s keeping you stuck in your current growth.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card shadow-sm p-4 rounded m-2">
-                        <div class="d-flex">
-                            <!-- Corrected icon name -->
-                            <i class="fa mx-3 fa-video-camera fa-2x"></i>
-                            <div class="div">
-                                <h5 class="mb-2 text-start">Engaging Videos</h5>
-                                <p class="text-muted">Create videos that truly get appreciated by your viewers.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card shadow-sm p-4 rounded m-2">
-                        <div class="d-flex">
-                            <!-- Corrected icon name -->
-                            <i class="fa mx-3 fa-dollar fa-2x"></i> <!-- or fa-usd -->
-                            <div class="div">
-                                <h5 class="mb-2 text-start">Maximize Your ROI</h5>
-                                <p class="text-muted">High-retention, high-converting edits to boost your revenue.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-5">
-                <button class="btn btn-lg px-5 btn-getstarted shadow-lg">Let’s Unlock Your Growth Together!</button>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h3 class="fw-bold text-center mb-3 " style="color: var(--accent-red);">What Clients Say About Me</h3>
-            <p class="text-center">See what our clients are saying about our video editing services and how we've helped
-                them grow their
-                online
-                presence.</p>
-        </div><!-- End Section Title -->
-
-
-        <!-- <img src="assets/images/tbg1.jpg" class="testimonials-bg" alt=""> -->
-
-        <div class="container testimonials" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper init-swiper">
-                <div class="swiper-wrapper">
-                    <div class="testimonial-item">
-                        <img src="assets/images/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                        <h3>Ethan Patric</h3>
-                        <h4>Client</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>"I love how fast Aziz delivers videos; his pricing is very competitive, and the
-                                quality is outstanding. I look forward to working with him for a lot longer."</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-                    <div class="testimonial-item">
-                        <img src="assets/images/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                        <h3>Tyler Condie</h3>
-                        <h4>Client</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>"Aziz is very easy to work with and has great skill. His turnaround time is fast, and
-                                I appreciate his willingness to try things that I ask for."</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-
-                    <div class="testimonial-item">
-                        <img src="assets/images/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                        <h3>Carson Crockett</h3>
-                        <h4>Client</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>"Aziz is more like a partner; we've worked on different projects and multiple clients.
-                                He's like an extra hand to me. I don't recommend working with him because I want to keep
-                                working with him."</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-
-                    <div class="testimonial-item">
-                        <img src="assets/images/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                        <h3>Jeremy Cortez</h3>
-                        <h4>Client</h4>
-                        <div class="stars">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i>
-                        </div>
-                        <p>
-                            <i class="bi bi-quote quote-icon-left"></i>
-                            <span>"Aziz consistently delivered high-quality videos with impressive turnaround times. His
-                                professionalism and creativity made our collaboration seamless and productive."</span>
-                            <i class="bi bi-quote quote-icon-right"></i>
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section><!-- /Testimonials Section -->
-    <section class="comparison-section py-5 myip-bg">
-        <div class="container">
-            <h2 class="fw-bold text-center mb-5 text-light">How We Compare to Other Agencies</h2>
-            <div class="comparison-grid">
-                <div class="column kunio-agency">
-                    <h3>
-
-                        <img src="assets/images/logo-white.png" alt="Kunio Logo" class="agency-logo"> Kunio
-                    </h3>
-                    <ul>
-                        <li><span class="icon-check">✓</span> Study top creators & trends</li>
-                        <li><span class="icon-check">✓</span> Reliable & on-time delivery</li>
-                        <li><span class="icon-check">✓</span> Analyze top 5 creators</li>
-                        <li><span class="icon-check">✓</span> Until you're fully satisfied</li>
-                        <li><span class="icon-check">✓</span> Unique brand style over time</li>
+                </article>
+                <article class="package-card popular">
+                    <span class="popular-badge">Most Popular</span>
+                    <h4>Growth</h4>
+                    <p class="package-price">Weekly</p>
+                    <p class="opacity-75 mb-0">For creators publishing consistently and optimizing performance each upload.</p>
+                    <ul class="package-list">
+                        <li>4 edits per month</li>
+                        <li>Structured retention architecture</li>
+                        <li>Priority turnaround window</li>
+                        <li>Performance feedback loop</li>
                     </ul>
-                </div>
-                <div class="column other-agencies">
-                    <h3>
-                        <span class="dot"></span>Other Agencies
-                    </h3>
-                    <ul>
-                        <li><span class="icon-cross">✕</span> Generic editing</li>
-                        <li><span class="icon-cross">✕</span> Slow, inconsistent</li>
-                        <li><span class="icon-cross">✕</span> One-size-fits-all approach</li>
-                        <li><span class="icon-cross">✕</span> Limited rounds</li>
-                        <li><span class="icon-cross">✕</span> Just edit & deliver</li>
+                </article>
+                <article class="package-card">
+                    <h4>Scale</h4>
+                    <p class="package-price">Custom</p>
+                    <p class="opacity-75 mb-0">For high-output channels that need a dependable editing system.</p>
+                    <ul class="package-list">
+                        <li>Multi-video weekly throughput</li>
+                        <li>Advanced pacing and visual rhythm</li>
+                        <li>Workflow integration support</li>
+                        <li>Custom delivery framework</li>
                     </ul>
-                </div>
-
+                </article>
             </div>
         </div>
     </section>
-    <section id="faq" class="faq section bg-light py-5">
-        <div class="container-fluid">
-            <div class="content px-xl-5 justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
-                <h2 class="text-light hbold text-dark">Frequently Asked Questions</h2>
-                <p class="text-dark">
-                    Find answers to common questions about Kunio's services, pricing, and processes.
-                </p>
-            </div>
-            <div class="row gy-4">
-                <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-2">
 
-
-                    <div class="faq-container px-xl-5" data-aos="fade-up" data-aos-delay="200">
-
-                        <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="300">
-                            <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>How long does it take to edit a video?</h3>
-                            <div class="faq-content">
-                                <p>Typically 2–3 days, depending on complexity.</p>
-                            </div>
-                            <i class="faq-toggle bi bi-chevron-right"></i>
-                        </div><!-- End Faq item-->
-
-                        <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
-                            <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>Do you offer revisions?</h3>
-                            <div class="faq-content">
-                                <p>Yes! We refine until you’re 100% satisfied.</p>
-                            </div>
-                            <i class="faq-toggle bi bi-chevron-right"></i>
-                        </div><!-- End Faq item-->
-
-                        <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
-                            <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>What if I don’t like the final result?</h3>
-                            <div class="faq-content">
-                                <p>We collaborate closely, so you get exactly what you envisioned.</p>
-                            </div>
-                            <i class="faq-toggle bi bi-chevron-right"></i>
-                        </div><!-- End Faq item-->
-
-                        <div class="faq-item" data-aos="fade-up" data-aos-delay="600">
-                            <i class="faq-icon bi bi-question-circle"></i>
-                            <h3>Why not hire my own editor?</h3>
-                            <div class="faq-content">
-                                <p>Managing an in-house editor is time-consuming—we handle everything so you can focus
-                                    on creating.</p>
-                            </div>
-                            <i class="faq-toggle bi bi-chevron-right"></i>
-                        </div><!-- End Faq item-->
-
-                    </div>
-
-
-                </div>
-                <div class="col-lg-5 order-1 order-lg-1">
-                    <img src="assets/images/faq1.png" class="img-fluid" alt="FAQ" data-aos="zoom-in"
-                        data-aos-delay="500">
-                </div>
-
-            </div>
-
-        </div>
-
-    </section><!-- /Faq Section -->
-
-
-
-    <section class="calendly-section py-5 myip-bg" id="book-a-call">
+    <section class="section-padding" id="guarantee" style="background: rgba(8, 18, 38, 0.4);">
         <div class="container">
-            <h2 class="fw-bold text-center mb-4 text-light">Ready to Grow Your Brand?</h2>
-            <p class="text-center text-light mb-5"
-                style="font-size: 1.1em; max-width: 700px; margin-left: auto; margin-right: auto;">
-                Schedule a free, no-obligation discovery call with our team. Let's discuss your goals and how Unchained
-                can help you achieve them.
-            </p>
-            <div class="calendly-embed-container">
-
-                <div class="calendly-inline-widget" data-url="https://calendly.com/theiqbal111"
-                    style="min-width:320px;height:700px;">
+            <div class="section-lead-icon"><i class="fa-solid fa-shield-heart"></i></div>
+            <div class="guarantee-wrap text-center">
+                <h2 class="mb-3">Guarantee + <span class="text-gradient">Risk Reversal</span></h2>
+                <p class="opacity-75 mb-0">Your first video is protected. If it does not feel like a clear upgrade from your previous editing process, we refine it until it does before moving forward.</p>
+                <div class="guarantee-points">
+                    <div class="guarantee-point">
+                        <div class="mini-icon mx-auto"><i class="fa-solid fa-award"></i></div>
+                        First-video satisfaction promise
+                    </div>
+                    <div class="guarantee-point">
+                        <div class="mini-icon mx-auto"><i class="fa-solid fa-clock"></i></div>
+                        Clear turnaround and communication
+                    </div>
+                    <div class="guarantee-point">
+                        <div class="mini-icon mx-auto"><i class="fa-solid fa-check-double"></i></div>
+                        Refinement until publish-ready
+                    </div>
                 </div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
-                    async></script>
-
-                <noscript>
-                    <p class="text-center text-light mt-3">
-                        Please enable JavaScript to use the scheduling widget. Alternatively, you can
-                        <a href="https://calendly.com/theiqbal111" target="_blank" rel="noopener noreferrer"
-                            style="color: #8A2BE2;">book a call directly on Calendly</a>.
-                    </p>
-                </noscript>
+                <a href="#book" class="btn-glow mt-4">Book Your First Video</a>
             </div>
-            <p class="text-center mt-4" style="color: #aaa;">
-                <small><em>If the calendar doesn't load, please ensure you've replaced
-                        "https://calendly.com/theiqbal111" with your correct Calendly link.</em></small>
-            </p>
         </div>
     </section>
 
+    <section class="section-padding" id="team-strip" style="background: rgba(7, 16, 34, 0.55);">
+        <div class="container text-center">
+            <div class="section-lead-icon"><i class="fa-solid fa-people-group"></i></div>
+            <h2 class="mb-3">Meet The <span class="text-gradient">Team</span></h2>
+            <p class="portfolio-section-note">Small, focused, and obsessed with creating clean edits that perform.</p>
+            <div class="team-grid">
+                <article class="team-card">
+                    <div class="team-avatar"><img src="https://i.pravatar.cc/160?img=12" alt="Aziz Iqbal"></div>
+                    <h5 class="mb-1">Aziz Iqbal</h5>
+                    <p class="opacity-75 mb-0">Lead Editor</p>
+                </article>
+                <article class="team-card">
+                    <div class="team-avatar"><img src="https://i.pravatar.cc/160?img=5" alt="Project Coordinator"></div>
+                    <h5 class="mb-1">Project Coordinator</h5>
+                    <p class="opacity-75 mb-0">Workflow + Delivery</p>
+                </article>
+                <article class="team-card">
+                    <div class="team-avatar"><img src="https://i.pravatar.cc/160?img=32" alt="Motion Designer"></div>
+                    <h5 class="mb-1">Motion Designer</h5>
+                    <p class="opacity-75 mb-0">Visual Dynamics</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
-
-
-
-
-    <!-- ***** Footer Start ***** -->
-    <footer class="myip-bg">
+    <footer class="site-footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <ul class="social">
-                        <li>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-rss"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                        </li>
-                    </ul>
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">KunioCreatives</div>
+                    <p class="footer-text">Stress-free, retention-focused YouTube editing built for established creators who want predictable output and long-term growth.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-title">Main Sections</div>
+                    <div class="footer-links">
+                        <a href="#results">Results</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#portfolio">Portfolio</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-title">Get Started</div>
+                    <div class="footer-links">
+                        <a href="#book">Book a Call</a>
+                        <a href="#service-packages">View Packages</a>
+                        <a href="#guarantee">Guarantee</a>
+                        <a href="#team-strip">Team</a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="copyright">
-                        Copyright &copy;
-                    </p>
-                </div>
-            </div>
+            <div class="footer-bottom">© 2026 KunioCreatives. Built for growth-focused creators.</div>
         </div>
     </footer>
+
+    <div class="mobile-cta">
+        <a href="#book">Book Your Call With KunioCreatives</a>
+    </div>
+
+    <nav id="mobileDrawerMenu" class="mobile-bottom-nav" aria-label="Mobile bottom navigation">
+        <a href="#" data-target="hero"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        <a href="#results" data-target="results"><i class="fa-solid fa-chart-line"></i><span>Results</span></a>
+        <a class="nav-center" href="#book" data-target="book"><i class="fa-solid fa-calendar-check"></i><span>Book</span></a>
+        <a href="#portfolio" data-target="portfolio"><i class="fa-solid fa-photo-film"></i><span>Work</span></a>
+        <a href="#faq" data-target="faq"><i class="fa-solid fa-circle-question"></i><span>FAQ</span></a>
+    </nav>
+
+    <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true"></div>
+
+    <div class="modal fade video-modal" id="portfolioVideoModal" tabindex="-1" aria-labelledby="portfolioVideoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-white" id="portfolioVideoModalLabel">Portfolio Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="video-frame-wrap">
+                        <iframe id="portfolioVideoFrame" src="about:blank" title="Portfolio video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            new Swiper('.mySwiper', {
-                slidesPerView: 5,
-                spaceBetween: 30,
-                loop: true,
-                autoplay: {
-                    delay: 2000,
-                },
-                breakpoints: {
-                    320: { slidesPerView: 2 },
-                    576: { slidesPerView: 3 },
-                    768: { slidesPerView: 4 },
-                    992: { slidesPerView: 5 },
-                },
+        // Apply soft-load AOS defaults to all visual cards/items.
+        document.querySelectorAll('.addx-card, .timeline-card, .metric-card, .portfolio-item, .package-card, .team-card, .faq-item').forEach((el, idx) => {
+            if (!el.dataset.aos) {
+                el.dataset.aos = 'fade-up';
+            }
+            if (!el.dataset.aosDuration) {
+                el.dataset.aosDuration = '700';
+            }
+            if (!el.dataset.aosDelay) {
+                el.dataset.aosDelay = String((idx % 3) * 35);
+            }
+        });
+
+        AOS.init({ duration: 700, once: true, offset: 18, easing: 'ease-out-cubic', startEvent: 'DOMContentLoaded' });
+
+        // Addx-style mouse tracking glow for cards
+        document.querySelectorAll('.addx-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
             });
         });
-    </script>
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
 
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/isotope-layout/isotope.pkgd.min.js"></script>
-    <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize Isotope
-            var iso = new Isotope('.isotope-container', {
-                itemSelector: '.isotope-item',
-                layoutMode: 'masonry',
-                masonry: {
-                    columnWidth: '.isotope-item'
+        // Add a scrolled state to the navbar for stronger contrast.
+        const navBar = document.querySelector('.navbar');
+        const updateNavState = () => {
+            navBar.classList.toggle('navbar-scrolled', window.scrollY > 20);
+        };
+        updateNavState();
+        window.addEventListener('scroll', updateNavState);
+
+        // Scroll progress line for a more cinematic browsing flow.
+        const progress = document.getElementById('scrollProgress');
+        const updateScrollProgress = () => {
+            const scrollTop = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const ratio = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+            progress.style.width = `${Math.min(ratio, 100)}%`;
+        };
+        updateScrollProgress();
+        window.addEventListener('scroll', updateScrollProgress);
+
+        // Floating back-to-top control for long pages.
+        const backToTop = document.getElementById('backToTop');
+        const updateBackToTop = () => {
+            backToTop.classList.toggle('show', window.scrollY > 500);
+        };
+        updateBackToTop();
+        window.addEventListener('scroll', updateBackToTop);
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Open portfolio videos in a modal for cleaner layout and faster page loading.
+        const portfolioModalElement = document.getElementById('portfolioVideoModal');
+        const portfolioFrame = document.getElementById('portfolioVideoFrame');
+        const portfolioTitle = document.getElementById('portfolioVideoModalLabel');
+        const portfolioModal = portfolioModalElement ? new bootstrap.Modal(portfolioModalElement) : null;
+        const buildVideoUrl = id => `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+
+        document.querySelectorAll('.portfolio-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const videoId = trigger.dataset.videoId;
+                const title = trigger.dataset.videoTitle || 'Portfolio Video';
+                if (!videoId || !portfolioModal || !portfolioFrame) {
+                    return;
+                }
+                portfolioTitle.textContent = title;
+                portfolioFrame.src = buildVideoUrl(videoId);
+                portfolioModal.show();
+            });
+        });
+
+        if (portfolioModalElement && portfolioFrame) {
+            portfolioModalElement.addEventListener('hidden.bs.modal', () => {
+                portfolioFrame.src = 'about:blank';
+            });
+        }
+
+        // Animate audit metric bars on reveal.
+        const metricFills = document.querySelectorAll('.metric-fill');
+        const metricObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                const bar = entry.target;
+                const value = Number(bar.dataset.progress || '0');
+                bar.style.width = `${value}%`;
+                const label = bar.closest('.metric-card').querySelector('.metric-label');
+                let current = 0;
+                const ticker = setInterval(() => {
+                    current += 1;
+                    label.textContent = `${current}%`;
+                    if (current >= value) {
+                        clearInterval(ticker);
+                    }
+                }, 14);
+                metricObserver.unobserve(bar);
+            });
+        }, { threshold: 0.45 });
+        metricFills.forEach(bar => metricObserver.observe(bar));
+
+        // Simple ROI estimation logic for interactive value framing.
+        const roiInputs = ['videosPerMonth', 'avgViews', 'retentionLift', 'conversionValue'].map(id => document.getElementById(id));
+        const roiViews = document.getElementById('roiViews');
+        const roiValue = document.getElementById('roiValue');
+        const formatNumber = n => n.toLocaleString('en-US');
+        const updateRoi = () => {
+            const videos = Number(roiInputs[0].value || 0);
+            const views = Number(roiInputs[1].value || 0);
+            const lift = Number(roiInputs[2].value || 0) / 100;
+            const leadValue = Number(roiInputs[3].value || 0);
+            const additionalViews = Math.round(videos * views * lift);
+            const valueSignal = Math.round((additionalViews / 1000) * leadValue);
+            roiViews.textContent = formatNumber(Math.max(additionalViews, 0));
+            roiValue.textContent = `$${formatNumber(Math.max(valueSignal, 0))}`;
+        };
+        if (roiInputs.every(Boolean) && roiViews && roiValue) {
+            roiInputs.forEach(input => input.addEventListener('input', updateRoi));
+            updateRoi();
+        }
+
+        // Highlight current section in mobile bottom navigation.
+        const bottomNavLinks = document.querySelectorAll('.mobile-bottom-nav a[data-target]');
+        const sectionMap = {
+            hero: document.querySelector('.hero'),
+            results: document.getElementById('results'),
+            book: document.getElementById('book'),
+            portfolio: document.getElementById('portfolio'),
+            faq: document.getElementById('faq')
+        };
+        const navSections = Object.entries(sectionMap)
+            .filter(([, section]) => Boolean(section))
+            .sort((a, b) => a[1].offsetTop - b[1].offsetTop);
+
+        const updateBottomNavActive = () => {
+            if (!bottomNavLinks.length) {
+                return;
+            }
+            const probe = window.scrollY + window.innerHeight * 0.38;
+            let activeKey = 'hero';
+            navSections.forEach(([key, section]) => {
+                if (probe >= section.offsetTop) {
+                    activeKey = key;
                 }
             });
+            bottomNavLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.target === activeKey);
+            });
+        };
 
-            // Set default filter
-            iso.arrange({ filter: '.filter-talking' });
+        updateBottomNavActive();
+        window.addEventListener('scroll', updateBottomNavActive);
 
-            // Filter buttons click handler
-            document.querySelectorAll('.isotope-filters li').forEach(function (filterButton) {
-                filterButton.addEventListener('click', function () {
-                    document.querySelector('.filter-active').classList.remove('filter-active');
-                    this.classList.add('filter-active');
-                    iso.arrange({ filter: this.getAttribute('data-filter') });
+        // Keep top mobile nav stable by collapsing it after selection.
+        const topMobileNav = document.getElementById('mainNav');
+        if (topMobileNav) {
+            topMobileNav.querySelectorAll('a.nav-link, a.btn-glow').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 991.98 && topMobileNav.classList.contains('show')) {
+                        bootstrap.Collapse.getOrCreateInstance(topMobileNav).hide();
+                    }
                 });
             });
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const faqItems = document.querySelectorAll('.faq-item');
+        }
 
-            faqItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    // Remove active class from all other items
-                    faqItems.forEach(i => {
-                        if (i !== item) i.classList.remove('faq-active');
-                    });
+        // Desktop custom cursor inspired by modern agency UI patterns.
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorRing = document.querySelector('.cursor-ring');
+        const canUseCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-                    // Toggle current item
-                    item.classList.toggle('faq-active');
-                });
+        if (canUseCustomCursor && cursorDot && cursorRing) {
+            let ringX = 0;
+            let ringY = 0;
+            let mouseX = 0;
+            let mouseY = 0;
+
+            document.body.classList.add('cursor-active');
+
+            const tick = () => {
+                ringX += (mouseX - ringX) * 0.18;
+                ringY += (mouseY - ringY) * 0.18;
+                cursorDot.style.transform = `translate3d(${mouseX - 3.5}px, ${mouseY - 3.5}px, 0)`;
+                cursorRing.style.transform = `translate3d(${ringX - 15}px, ${ringY - 15}px, 0)`;
+                requestAnimationFrame(tick);
+            };
+
+            window.addEventListener('mousemove', e => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
             });
-        });
-    </script>
 
+            document.querySelectorAll('a, button, .portfolio-trigger, .shorts-card').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+
+            tick();
+        }
+    </script>
 </body>
-
 </html>
