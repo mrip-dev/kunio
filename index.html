@@ -23,7 +23,7 @@
             --font-heading: 'Playfair Display', serif;
             --font-body: 'DM Sans', sans-serif;
             --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --animated-gradient: linear-gradient(270deg, #00d2ff, #00f2fe, #4facfe, #3a7bd5);
         }
 
         body {
@@ -61,7 +61,13 @@
             top: 0; left: 0; width: 100vw; height: 100vh;
             overflow: hidden;
             z-index: -1;
-            background: radial-gradient(circle at 20% 20%, #122653 0%, #0a1128 40%, #050a15 100%);
+            background: radial-gradient(circle at 20% 20%, #0a1128 0%, #050814 50%, #02040a 100%);
+        }
+
+        @keyframes bg-pan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .gradient-bg::before,
@@ -102,22 +108,23 @@
             width: 600px; height: 600px;
             background: #132a5e;
             top: -10%; left: -10%;
-            animation-delay: 0s;
+            animation: float-blob 25s infinite alternate ease-in-out;
         }
 
         .blob-2 {
-            width: 500px; height: 500px;
-            background: #3499d4;
+            width: 700px; height: 700px;
+            background: #1e3c72; /* Deep Blue */
             bottom: -20%; right: -10%;
-            opacity: 0.3;
-            animation-delay: -5s;
+            opacity: 0.35;
+            animation: float-blob 22s infinite alternate-reverse ease-in-out;
         }
 
         .blob-3 {
-            width: 400px; height: 400px;
-            background: #0d1e46;
-            top: 40%; left: 40%;
-            animation-duration: 25s;
+            width: 500px; height: 500px;
+            background: #2a5298; /* Mid Blue */
+            top: 30%; left: 30%;
+            animation: float-blob 28s infinite alternate ease-in-out;
+            opacity: 0.4;
         }
 
         @keyframes float-blob {
@@ -143,10 +150,13 @@
         h1, h2, h3 { font-family: var(--font-heading); }
 
         .text-gradient {
-            background: linear-gradient(to right, #ffffff, #3499d4);
+            background: var(--animated-gradient);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: bg-pan 4s infinite linear;
+            filter: drop-shadow(0 0 12px rgba(0, 210, 255, 0.45)) drop-shadow(0 0 25px rgba(58, 123, 213, 0.3));
         }
 
         .section-lead-icon {
@@ -157,12 +167,17 @@
             display: grid;
             place-items: center;
             font-size: 1.45rem;
-            color: #dff3ff;
-            background: linear-gradient(145deg, rgba(52, 153, 212, 0.35), rgba(19, 42, 94, 0.5));
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3), 0 0 20px rgba(52, 153, 212, 0.3);
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(52, 153, 212, 0.35), rgba(19, 42, 94, 0.5));
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px var(--primary-glow), inset 0 0 15px rgba(52, 153, 212, 0.3);
             transform: perspective(600px) rotateX(8deg);
-            animation: float-icon 4s ease-in-out infinite;
+            animation: float-icon 3s ease-in-out infinite, pulse-glow 4s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--primary-glow), inset 0 0 10px rgba(52, 153, 212, 0.2); }
+            100% { box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 35px var(--primary-glow), inset 0 0 25px rgba(52, 153, 212, 0.5); }
         }
 
         .mini-icon {
@@ -193,14 +208,26 @@
         }
 
         .trust-chip {
-            padding: 8px 14px;
+            padding: 8px 16px;
             border-radius: 999px;
-            font-size: 0.78rem;
-            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            color: #e4f4ff;
-            border: 1px solid rgba(52, 153, 212, 0.35);
-            background: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            font-weight: 700;
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-chip:hover {
+            transform: translateY(-3px);
+            border-color: #00d2ff;
+            background: rgba(0, 210, 255, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.3);
         }
 
         /* =========================================
@@ -225,13 +252,15 @@
             inset: 0;
             border-radius: inherit;
             border: 1px solid transparent;
-            background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(52, 153, 212, 0.16), transparent) border-box;
+            background: var(--animated-gradient);
+            background-size: 300% 300%;
             -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
             pointer-events: none;
+            animation: bg-pan 6s infinite linear;
         }
 
         /* Inner glow on hover */
@@ -239,16 +268,16 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 100%;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(52,153,212,0.1), transparent 40%);
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08), transparent 40%);
             z-index: -1;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
         .addx-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(52, 153, 212, 0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(52,153,212,0.15);
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 30px var(--primary-glow);
         }
 
         .addx-card:hover::after { opacity: 1; }
@@ -263,14 +292,20 @@
             background: transparent;
             color: #fff;
             font-family: var(--font-body);
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: 1px;
             padding: 16px 45px;
             border-radius: 50px;
-            border: 1px solid rgba(52, 153, 212, 0.5);
+            border: none;
+            background: linear-gradient(90deg, #3a7bd5, #00d2ff, #132a5e);
+            background-size: 200% auto;
+            color: #fff !important;
+            box-shadow: 0 0 20px var(--primary-glow);
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: inline-block;
             text-decoration: none;
+            text-transform: uppercase;
             z-index: 1;
         }
 
@@ -291,16 +326,18 @@
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(90deg, #132a5e, #3499d4);
+            background: linear-gradient(90deg, #132a5e, #3a7bd5, #00d2ff);
+            background-size: 200% auto;
             z-index: -1;
             transition: opacity 0.3s ease;
             opacity: 0;
+            animation: bg-pan 3s infinite linear;
         }
 
         .btn-glow:hover {
-            border-color: transparent;
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(52, 153, 212, 0.4);
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 10px 30px var(--primary-glow), 0 0 40px rgba(52, 153, 212, 0.6);
+            background-position: right center;
             color: #fff;
         }
 
@@ -342,17 +379,17 @@
         }
 
         .hero-badge {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(52, 153, 212, 0.3);
+            /* background: rgba(255,255,255,0.05); */
+            /* border: 1px solid rgba(52, 153, 212, 0.3); */
             color: #fff;
             padding: 10px 24px;
-            border-radius: 50px;
+            /* border-radius: 50px; */
             font-size: 0.85rem;
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 30px;
             display: inline-block;
-            box-shadow: 0 0 15px rgba(52, 153, 212, 0.2);
+            /* box-shadow: 0 0 15px rgba(52, 153, 212, 0.2); */
         }
 
         .nav-master {
@@ -443,8 +480,8 @@
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
-            background: linear-gradient(165deg, rgba(8, 17, 37, 0.94), rgba(11, 24, 52, 0.92));
-            transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.35s ease;
+            background: linear-gradient(165deg, rgba(5, 8, 20, 0.94), rgba(2, 4, 10, 0.92));
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         button.shorts-card {
@@ -456,9 +493,9 @@
         }
 
         .shorts-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(82, 196, 255, 0.55);
-            box-shadow: 0 12px 24px rgba(52, 153, 212, 0.25);
+            transform: translateY(-8px) scale(1.03);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 35px var(--secondary-glow);
         }
 
         .shorts-thumb {
@@ -476,16 +513,24 @@
 
         .shorts-play {
             position: absolute;
-            right: 10px;
-            bottom: 10px;
-            width: 34px;
-            height: 34px;
+            right: 15px;
+            bottom: 15px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: grid;
             place-items: center;
             color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(52, 153, 212, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(52, 153, 212, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .shorts-card:hover .shorts-play {
+            transform: scale(1.1);
+            background: #3499d4;
+            box-shadow: 0 0 30px rgba(52, 153, 212, 0.9);
         }
 
         .shorts-content {
@@ -540,9 +585,7 @@
             transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.35s ease, box-shadow 0.5s ease;
         }
         .portfolio-item:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary);
-            box-shadow: 0 16px 35px rgba(52,153,212,0.28);
+            transform: translateY(-10px) scale(1.02);
         }
         .portfolio-trigger {
             width: 100%;
@@ -562,13 +605,12 @@
             display: block;
             object-fit: cover;
             transform: scale(1);
-            transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1), filter 0.5s ease;
-            filter: saturate(1.02) contrast(1.02);
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.5s ease;
+            filter: saturate(1.1) contrast(1.05);
         }
 
         .portfolio-item:hover .portfolio-thumb {
-            transform: scale(1.04);
-            filter: saturate(1.08) contrast(1.05);
+            transform: scale(1.08) rotate(1deg);
         }
 
         .portfolio-cover {
@@ -605,14 +647,16 @@
             color: #d8eeff;
         }
 
-        .tag-green { border-color: rgba(101, 229, 153, 0.5); color: #8df4b8; }
-        .tag-cyan { border-color: rgba(94, 219, 255, 0.5); color: #8deaff; }
-        .tag-violet { border-color: rgba(165, 144, 255, 0.5); color: #beb1ff; }
+        .tag-green { border-color: rgba(0, 255, 135, 0.5); color: #00ff87; background: rgba(0, 255, 135, 0.1); }
+        .tag-cyan { border-color: rgba(0, 210, 255, 0.5); color: #00d2ff; background: rgba(0, 210, 255, 0.1); }
+        .tag-violet { border-color: rgba(58, 123, 213, 0.5); color: #8bc3ff; background: rgba(58, 123, 213, 0.1); }
 
+        .portfolio-tags {
             margin-bottom: 0;
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
+        }
 
         .hero-badge-row {
             display: flex;
@@ -621,7 +665,6 @@
             gap: 10px;
             flex-wrap: wrap;
             margin-bottom: 26px;
-        }
         }
 
         .stat-pill {
@@ -703,22 +746,26 @@
         }
 
         .package-card.popular {
-            border-color: rgba(52, 153, 212, 0.65);
-            box-shadow: 0 14px 32px rgba(52, 153, 212, 0.2);
+            border-color: #00d2ff;
+            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.4);
+            transform: scale(1.05);
+            z-index: 2;
         }
 
         .popular-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 4px 10px;
+            top: -12px;
+            right: 20px;
+            padding: 6px 14px;
             border-radius: 999px;
-            font-size: 0.65rem;
-            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            color: #eaffff;
-            border: 1px solid rgba(117, 232, 255, 0.6);
-            background: rgba(58, 189, 223, 0.2);
+            color: #fff;
+            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.5);
+            animation: pulse-glow 2s infinite alternate;
         }
 
         .package-price {
@@ -1028,11 +1075,18 @@
         }
 
         .timeline-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 16px;
-            padding: 22px;
+            padding: 26px;
             backdrop-filter: blur(12px);
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d2ff;
+            box-shadow: 0 15px 35px rgba(0, 210, 255, 0.3);
         }
 
         .roi-grid {
@@ -1347,9 +1401,16 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            border: 1px solid rgba(132, 222, 255, 0.55);
-            background: rgba(132, 222, 255, 0.05);
-            transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+            border: 1px solid rgba(0, 210, 255, 0.8);
+            background: rgba(0, 210, 255, 0.1);
+            transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            animation: rotate-ring 4s linear infinite;
+        }
+
+        @keyframes rotate-ring {
+            0% { transform: translate3d(var(--ring-x), var(--ring-y), 0) rotate(0deg); }
+            100% { transform: translate3d(var(--ring-x), var(--ring-y), 0) rotate(360deg); }
         }
 
         body.cursor-active .cursor-dot,
@@ -1358,9 +1419,11 @@
         }
 
         body.cursor-hover .cursor-ring {
-            width: 44px;
-            height: 44px;
-            border-color: rgba(132, 222, 255, 0.8);
+            width: 50px;
+            height: 50px;
+            border-color: #00d2ff;
+            background: rgba(0, 210, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
         }
 
         @media (hover: none), (pointer: coarse) {
@@ -1396,6 +1459,55 @@
                 transition: none !important;
             }
         }
+
+        /* Typography overrides based on feedback */
+        .text-gradient {
+            padding-right: 0.15em; /* fixes italics getting cut off */
+            display: inline-block;
+        }
+
+        h1, h2, h3, .display-3, .display-5 {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .accordion-header {
+            max-width: 100%;
+        }
+
+        h1, .display-3 {
+            font-size: clamp(1.8rem, 4.5vw, 2.6rem) !important;
+        }
+
+        h2, .display-5 {
+            font-size: clamp(1.5rem, 3.5vw, 2.1rem) !important;
+            line-height: 1.35;
+        }
+
+        h3 {
+            font-size: clamp(1.2rem, 2.5vw, 1.7rem) !important;
+        }
+
+        /* Accordion overrides */
+        .accordion-button {
+            padding: 24px 32px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            text-align: left !important;
+        }
+        .accordion-button::after {
+            display: none !important; /* Remove bootstrap default chevron */
+        }
+        .accordion-body {
+            padding: 10px 32px 32px 32px !important;
+            text-align: left !important;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            color: #ffffff !important;
+        }
     </style>
 </head>
 <body>
@@ -1412,7 +1524,7 @@
         <div class="container">
             <div class="nav-master">
                 <div class="navbar-brand-wrap">
-                    <a class="navbar-brand text-white fw-bold mb-0" href="#" style="font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 0.5px;">KunioCreatives</a>
+                    <a class="navbar-brand text-white fw-bold mb-0" href="#" style="font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 0.5px;"><img src="/assets/images/logo-new.png" width="80px" alt=""></a>
                 </div>
                 <button class="navbar-toggler border-0 d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
@@ -1421,9 +1533,10 @@
                     <div class="collapse navbar-collapse justify-content-center" id="mainNav">
                         <ul class="navbar-nav gap-lg-4 gap-2">
                             <li class="nav-item"><a class="nav-link nav-pill" href="#results">Results</a></li>
-                            <li class="nav-item"><a class="nav-link nav-pill" href="#how-it-works">How It Works</a></li>
                             <li class="nav-item"><a class="nav-link nav-pill" href="#portfolio">Portfolio</a></li>
+                            <li class="nav-item"><a class="nav-link nav-pill" href="#how-it-works">How It Works</a></li>
                             <li class="nav-item"><a class="nav-link nav-pill" href="#faq">FAQ</a></li>
+                            <li class="nav-item"><a class="nav-link nav-pill" href="mailto:aziz@gmail.com"><img width="20" height="20" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/></a></li>
                             <li class="nav-item d-lg-none mt-2"><a class="btn-glow w-100 text-center" href="#book">Book a Call</a></li>
                         </ul>
                     </div>
@@ -1438,8 +1551,15 @@
     <section class="hero text-center text-white">
         <div class="container">
             <div class="hero-badge-row">
-                <div class="hero-mini-note"><i class="fa-solid fa-bolt"></i> Edited And Delivered In 48 Hours</div>
-                <div class="hero-badge">Top Rated Plus on Upwork • 100% Success Score</div>
+                <a href="https://www.upwork.com/freelancers/editorazk" target="_blank" style="text-decoration: none;">
+                    <div class="hero-badge" style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+                        <img src="/assets/images/top-rated-plus-badge.png" alt="Upwork Top Rated Plus" width="80" height="50">
+                        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                            <span style="display: flex; align-items: center; gap: 4px;">Top Rated Plus on Upwork • 100% Success Score</span>
+                            <span style="font-size: 0.8em; opacity: 0.8; margin-top: 2px;">Check out my profile on Upwork &rarr;</span>
+                        </div>
+                    </div>
+                </a>
             </div>
 
             <h1 class="display-3 fw-bold mb-4" style="line-height: 1.2; font-family: var(--font-body);">
@@ -1451,21 +1571,24 @@
                 Eliminate revision cycles, remove deadline stress, and publish videos engineered for retention and long-term growth.
             </p>
 
-            <div class="vsl-wrapper">
-                <div class="vsl-inner">
-                    <iframe src="https://www.youtube.com/embed/6QLWOML3QJA?rel=0" allowfullscreen></iframe>
-                </div>
+            <div class="vsl-wrapper" style="box-shadow: none; background: transparent; padding: 0; max-width: 900px;">
+                <article style="border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); overflow: hidden; position: relative;">
+                    <button class="portfolio-trigger w-100 p-0 position-relative" type="button" data-video-id="19TTMbbkxrw" data-video-title="A Stress-Free, Performance-Driven Editing System" style="border: none; background: transparent; display: block; cursor: pointer; transform: none !important; transition: none !important;">
+                        <img src="https://i.ytimg.com/vi/19TTMbbkxrw/maxresdefault.jpg" alt="Video Sales Letter thumbnail" loading="lazy" style="width: 100%; display: block; opacity: 1; transform: none !important; transition: none !important;">
+                        <div class="t-play-btn" style="width: 80px; height: 80px; font-size: 30px; transform: translate(-50%, -50%) !important; transition: none !important;"><i class="fa-solid fa-play" style="margin-left: 6px;"></i></div>
+                    </button>
+                </article>
             </div>
 
             <a href="#book" class="btn-glow mt-2 mb-4" style="font-size: 1.2rem; padding: 18px 50px;">Book a Call</a>
             <p class="mt-3" style="font-size: 0.9rem; letter-spacing: 2px; opacity: 0.85;">FEWER REVISIONS • PREDICTABLE DEADLINES • RETENTION-FOCUSED STRUCTURE</p>
 
-            <div class="trust-strip">
+            <!-- <div class="trust-strip">
                 <div class="trust-chip">Top Rated Plus</div>
                 <div class="trust-chip">100% Success Score</div>
                 <div class="trust-chip">Retention-First Editing</div>
                 <div class="trust-chip">2-3 Day Turnaround</div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -1474,7 +1597,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
                     <div class="section-lead-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <h2 class="display-5 mb-4 text-gradient">Tired of Managing Editors?</h2>
+                    <h2 class="display-5 mb-4 "><span style="color: white !important;">Tired of </span> <span class="text-gradient"><i>Managing Editors?</i></span></h2>
                     <div class="addx-card mt-5 text-start text-lg-center" style="line-height: 1.6;">
                         <p class="fs-5 opacity-75 mb-3">You shouldn't have to chase deadlines, re-explain your vision, or fix pacing yourself. Yet every upload feels heavier than it should.</p>
                         <p class="fs-5 opacity-75 mb-3">First drafts miss the mark.</p>
@@ -1494,7 +1617,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
                     <div class="section-lead-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <h2 class="display-5 mb-4 text-gradient">This Isn't Just Editing — It's a Stress-Free Growth System</h2>
+                     <h2 class="display-5 mb-4 "><span style="color: white !important;">This Isn't Just Editing — </span> <span class="text-gradient"><i>It's a Stress-Free Growth System</i></span></h2>
+
                     <div class="addx-card mt-5 text-start text-lg-center" style="line-height: 1.6;">
                         <p class="fs-5 opacity-75 mb-3">You send the footage.</p>
                         <p class="fs-5 opacity-75 mb-3">I handle structure, pacing, and execution.</p>
@@ -1510,186 +1634,526 @@
     <!-- RESULTS / SOCIAL PROOF -->
     <section class="section-padding" id="results">
         <div class="container">
-            <div class="section-lead-icon"><i class="fa-solid fa-chart-line"></i></div>
-            <h2 class="text-center mb-4 pb-2">Results Speak <span class="text-gradient">for Themselves</span></h2>
-            <p class="text-center opacity-75 mb-5 mx-auto" style="max-width: 700px;">Creators upgraded from chaotic editing to a streamlined, growth-focused workflow — and saw measurable improvements.</p>
-            <div class="row g-4">
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="addx-card h-100">
-                        <h4 class="mb-3 text-white">Luke Robins</h4>
-                        <p class="text-gradient fw-bold mb-3">139K+ views on first video • Went full-time on YouTube</p>
-                        <p class="opacity-75 fst-italic">"I've worked with Aziz for over a year — from TikTok shorts to YouTube videos. The results have been outstanding thanks to his skill and reliability."</p>
+            <h2 class="text-center mb-2 pb-1" style="font-size: 2.8rem; font-family: var(--font-heading); font-weight: 700; color: #ffffff;">
+                Results Speak for Themselves
+            </h2>
+            <p class="text-center mb-5 mx-auto" style="max-width: 700px; font-size: 1rem; font-family: var(--font-body); font-weight: 400; color: #ffffff;">
+                Creators upgraded from chaotic editing to a streamlined, growth-focused workflow — and saw measurable improvements.
+            </p>
+
+            <style>
+                .testimonial-grid {
+                    column-count: 2;
+                    column-gap: 24px;
+                }
+                @media (max-width: 991px) {
+                    .testimonial-grid { column-count: 1; }
+                }
+
+                .t-card {
+                    /* background: #0d0f11; */
+                    border-radius: 16px;
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    padding: 24px;
+                    margin-bottom: 24px;
+                    display: inline-block;
+                    width: 100%;
+                    break-inside: avoid;
+                    text-align: left;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+                }
+
+                .t-card-horizontal {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 24px;
+                    align-items: center;
+                }
+
+                .t-card-horizontal.reverse {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                @media (max-width: 768px) {
+                    .t-card-horizontal, .t-card-horizontal.reverse {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                .t-video {
+                    position: relative;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    aspect-ratio: 16/9;
+                    background: #1a1a1a;
+                    cursor: pointer;
+                }
+
+                .t-video img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    opacity: 0.85;
+                    transition: opacity 0.3s;
+                }
+
+                .t-video:hover img {
+                    opacity: 1;
+                }
+
+                .t-play-btn {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 50px;
+                    height: 50px;
+                    background: rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(8px);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #fff;
+                    font-size: 20px;
+                    border: 1px solid rgba(255,255,255,0.3);
+                }
+
+                .t-play-btn i { margin-left: 4px; }
+
+                .t-result-line {
+                    font-family: var(--font-body);
+                    font-weight: 700;
+                    color: #ffffff;
+                    text-align: center;
+                    margin-bottom: 16px;
+                    font-size: 1.15rem;
+                }
+
+                .t-quote {
+                    font-family: var(--font-body);
+                    font-size: 1.05rem;
+                    line-height: 1.6;
+                    font-weight: 400;
+                    color: #ffffff;
+                    text-align: center;
+                    margin-bottom: 24px;
+                }
+
+                .t-author {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 12px;
+                }
+
+                .t-author img {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .t-author-info {
+                    text-align: left;
+                }
+
+                .t-author-info h5 {
+                    margin: 0;
+                    font-size: 1rem;
+                    color: #fff;
+                    font-weight: 600;
+                }
+
+                .t-author-info p {
+                    margin: 0;
+                    font-size: 0.85rem;
+                    color: rgba(255, 255, 255, 0.6);
+                }
+            </style>
+
+            <div class="row g-4 justify-content-center">
+    <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="t-card">
+                        <div class="t-card-horizontal reverse">
+                            <div class="t-video">
+                                <a href="https://youtu.be/AzoVzuU_MNI" target="_blank">
+                                    <img src="https://img.youtube.com/vi/AzoVzuU_MNI/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/AzoVzuU_MNI/hqdefault.jpg'" alt="Ethan Video">
+                                    <div class="t-play-btn"><i class="fa-solid fa-play"></i></div>
+                                </a>
+                            </div>
+                            <div>
+                                <p class="t-result-line">Consistently meets tight deadlines for time-sensitive content</p>
+                                <p class="t-quote">"One thing I really love about Aziz is that he always delivers on deadlines. Sometimes I have time-sensitive information that needs to go out fast, and working with him makes that easy."</p>
+                                <div class="t-author">
+                                    <img src="/assets/images/ethans.png" alt="Ethan">
+                                    <div class="t-author-info">
+                                        <h5>Ethan</h5>
+                                        <p>Creator @EthanPatrick_CreditCards</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="addx-card h-100">
-                        <h4 class="mb-3 text-white">Ethan</h4>
-                        <p class="text-gradient fw-bold mb-3">Consistently meets tight deadlines for time-sensitive content</p>
-                        <p class="opacity-75 fst-italic">"One thing I really love about Aziz is that he always delivers on deadlines. Sometimes I have time-sensitive information that needs to go out fast, and working with him makes that easy."</p>
+
+                <div class="col-12" data-aos="fade-up">
+                    <div class="t-card">
+                        <div class="t-card-horizontal">
+                            <div>
+                                <p class="t-result-line">139K+ views on first video • Went full-time on YouTube</p>
+                                <p class="t-quote">"I've worked with Aziz for over a year — from TikTok shorts to YouTube videos. The results have been outstanding thanks to his skill and reliability."</p>
+                                <div class="t-author">
+                                    <img src="/assets/images/robbins.png" alt="Luke Robins">
+                                    <div class="t-author-info">
+                                        <h5>Luke Robins</h5>
+                                        <p>YouTube Scriptwriter @LukeScripted</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="t-video">
+                                <a href="https://youtu.be/hf-L1Sh58Zw" target="_blank">
+                                    <img src="https://img.youtube.com/vi/hf-L1Sh58Zw/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/hf-L1Sh58Zw/hqdefault.jpg'" alt="Luke Robins Video">
+                                    <div class="t-play-btn"><i class="fa-solid fa-play"></i></div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="addx-card h-100">
-                        <h4 class="mb-3 text-white">Dr. Aziz</h4>
-                        <p class="text-gradient fw-bold mb-3">New leads every week • Tested 30+ editors</p>
-                        <p class="opacity-75 fst-italic">"I tested over 30 editors, and Aziz stood out with his graphics, animations, and pacing. Beyond skill, he genuinely cares about my success."</p>
+
+
+                <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="t-card">
+                        <div class="t-card-horizontal">
+                            <div>
+                                <p class="t-result-line">New leads every week • Tested 30+ editors</p>
+                                <p class="t-quote">"I tested over 30 editors, and Aziz stood out with his graphics, animations, and pacing. Beyond skill, he genuinely cares about my success."</p>
+                                <div class="t-author">
+                                    <img src="/assets/images/draziz.jpeg" alt="Dr. Aziz">
+                                    <div class="t-author-info">
+                                        <h5>Dr. Aziz</h5>
+                                        <p>Confidence Expert & Author @GetMoreConfidence</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="t-video">
+                                <a href="https://youtu.be/hc_1r9hgZ7Q" target="_blank">
+                                    <img src="https://img.youtube.com/vi/hc_1r9hgZ7Q/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/hc_1r9hgZ7Q/hqdefault.jpg'" alt="Dr. Aziz Video">
+                                    <div class="t-play-btn"><i class="fa-solid fa-play"></i></div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
+
             <div class="text-center mt-5">
                 <a href="#book" class="btn-glow">Book a Call</a>
             </div>
         </div>
     </section>
 
+    <!-- PORTFOLIO SECTION MOVED ABOVE -->
+    <section class="section-padding" id="portfolio" style="background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);">
+        <div class="container">
+            <div class="section-lead-icon"><i class="fa-solid fa-photo-film"></i></div>
+            <h2 class="text-center mb-5">Portfolio</h2>
+            <p class="portfolio-section-note">A curated selection of edits built for retention, stronger watch-time curves, and measurable channel momentum.</p>
+
+            <div class="portfolio-grid" data-aos="fade-up">
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="_xjg5mOf-m8" data-video-title="High-retention storytelling edit with strategic hook pacing.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/_xjg5mOf-m8/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="ygdqm4QrfdM" data-video-title="Education format optimized for clear information flow and watch-time.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/ygdqm4QrfdM/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="8S1l53oGkjc" data-video-title="Authority-driven talking-head edit with cleaner momentum transitions.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/8S1l53oGkjc/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="rpaExRYwCjk" data-video-title="Fast-pace visual narrative built to reduce early drop-offs.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/rpaExRYwCjk/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="K-vmuCx5k8I" data-video-title="Long-form strategy piece with clean chapter rhythm and emphasis cuts.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/K-vmuCx5k8I/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="NGGvmLhH2wo" data-video-title="Conversion-focused edit balancing insight depth with visual energy.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/NGGvmLhH2wo/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="WovT1fJaI_Q" data-video-title="Creator growth edit with stronger narrative anchors and retention beats.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/WovT1fJaI_Q/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="x4L09yYeotU" data-video-title="Educational breakdown with modern pacing and concise visual callouts.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/x4L09yYeotU/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="cVLPYIXujSk" data-video-title="Punchy social-proof style edit built for fast comprehension and trust.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/cVLPYIXujSk/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                <article class="portfolio-item">
+                    <button class="portfolio-trigger" type="button" data-video-id="DJIFEoV2mrc" data-video-title="Result-driven long-form production with cleaner information hierarchy.">
+                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/DJIFEoV2mrc/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
+                    </button>
+                </article>
+                </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="short-form" style="background: rgba(7, 16, 34, 0.5);">
+        <div class="container">
+            <div class="section-lead-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <h2 class="text-center mb-3">Short Form <span class="text-gradient">Videos</span></h2>
+            <p class="portfolio-section-note">Reels, Shorts, TikToks, and LinkedIn clips designed for fast hooks and strong shareability.</p>
+            <div class="shorts-grid">
+                <button class="shorts-card portfolio-trigger" type="button" data-video-id="d6IYk1ul_-k" data-video-title="Shorts Video 1">
+                    <div class="shorts-thumb">
+                        <img src="https://img.youtube.com/vi/d6IYk1ul_-k/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/d6IYk1ul_-k/hqdefault.jpg'" alt="Short form video thumbnail" loading="lazy">
+                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
+                    </div>
+                </button>
+                <button class="shorts-card portfolio-trigger" type="button" data-video-id="MzWZUGcY5e4" data-video-title="Shorts Video 2">
+                    <div class="shorts-thumb">
+                        <img src="https://img.youtube.com/vi/MzWZUGcY5e4/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/MzWZUGcY5e4/hqdefault.jpg'" alt="Short form video thumbnail" loading="lazy">
+                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
+                    </div>
+                </button>
+                <button class="shorts-card portfolio-trigger" type="button" data-video-id="UNmz_M0mwwk" data-video-title="Shorts Video 3">
+                    <div class="shorts-thumb">
+                        <img src="https://img.youtube.com/vi/UNmz_M0mwwk/maxresdefault.jpg" onerror="this.src='https://i.ytimg.com/vi/UNmz_M0mwwk/hqdefault.jpg'" alt="Short form video thumbnail" loading="lazy">
+                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <style>
+
+        /* Addx Studio Clone: How It Works Section */
+        .hiw-card {
+            background: linear-gradient(160deg, rgba(14, 21, 38, 0.95) 0%, rgba(5, 10, 21, 0.95) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: left;
+            z-index: 1;
+            overflow: visible;
+        }
+
+        .hiw-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0; height: 100%;
+            background: radial-gradient(ellipse at bottom, rgba(52, 153, 212, 0.15) 0%, transparent 60%);
+            border-radius: 0 0 20px 20px;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .hiw-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(52, 153, 212, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 10px 30px rgba(52, 153, 212, 0.15);
+        }
+
+        .hiw-card:hover::before {
+            opacity: 1;
+            background: radial-gradient(ellipse at bottom, rgba(52, 153, 212, 0.35) 0%, transparent 80%);
+        }
+
+        .hiw-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 34px;
+            height: 34px;
+            background: #0a1128;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .hiw-card:hover .hiw-badge {
+            border-color: rgba(52, 153, 212, 0.6);
+            box-shadow: 0 0 15px rgba(52, 153, 212, 0.4);
+            background: #132a5e;
+            color: #fff;
+        }
+
+        .hiw-icon-wrap {
+            flex-grow: 1;
+            display: grid;
+            place-items: center;
+            padding: 70px 20px 40px;
+        }
+
+        .hiw-icon-wrap i {
+            font-size: 5.5rem;
+            color: rgb(255, 255, 255);
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.05));
+            transition: all 0.5s ease;
+        }
+
+        .hiw-card:hover .hiw-icon-wrap i {
+            color: rgba(255, 255, 255, 0.943);
+            filter: drop-shadow(0 0 25px rgba(52, 153, 212, 0.4));
+            transform: scale(1.08) translateY(-5px);
+        }
+
+        .hiw-content {
+            padding: 0 35px 45px;
+        }
+
+        .hiw-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            text-align: left;
+        }
+    </style>
+
     <section class="section-padding" id="how-it-works">
-        <div class="container text-center">
-            <div class="section-lead-icon"><i class="fa-solid fa-diagram-project"></i></div>
-            <h2 class="mb-5 text-gradient">How It Works</h2>
-            <div class="row g-4">
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="addx-card text-center">
-                        <span class="mini-icon"><i class="fa-solid fa-compass"></i></span>
-                        <h1 class="text-gradient opacity-50 mb-3">01</h1>
-                        <p class="mb-0 fw-bold" style="line-height: 1.7;">We align on your channel goals and direction</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="addx-card text-center">
-                        <span class="mini-icon"><i class="fa-solid fa-folder-open"></i></span>
-                        <h1 class="text-gradient opacity-50 mb-3">02</h1>
-                        <p class="mb-0 fw-bold" style="line-height: 1.7;">You submit footage and context</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="addx-card text-center">
-                        <span class="mini-icon"><i class="fa-solid fa-film"></i></span>
-                        <h1 class="text-gradient opacity-50 mb-3">03</h1>
-                        <p class="mb-0 fw-bold" style="line-height: 1.7;">You receive a structured first draft within the agreed timeline</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="addx-card text-center">
-                        <span class="mini-icon"><i class="fa-solid fa-rocket"></i></span>
-                        <h1 class="text-gradient opacity-50 mb-3">04</h1>
-                        <p class="mb-0 fw-bold" style="line-height: 1.7;">Minor refinements if needed — then publish</p>
-                    </div>
-                </div>
-            </div>
-            <p class="fw-bold fs-5 mt-5 opacity-75">Simple. Predictable. Scalable.</p>
-            <a href="#book" class="btn-glow mt-3">Book a Call</a>
-        </div>
-    </section>
-
-    <section class="section-padding" id="audit-snapshot" style="background: rgba(9, 20, 44, 0.45);">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10" data-aos="fade-up">
-                    <div class="section-lead-icon"><i class="fa-solid fa-sliders"></i></div>
-                    <h2 class="text-center mb-3">Channel Audit <span class="text-gradient">Snapshot</span></h2>
-                    <p class="text-center opacity-75 mb-5">How top-performing videos are diagnosed before editing starts.</p>
-                    <div class="addx-card">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="metric-card">
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <strong>Hook Strength</strong>
-                                        <span class="metric-label">0%</span>
-                                    </div>
-                                    <div class="metric-track"><div class="metric-fill" data-progress="88"></div></div>
-                                </div>
-                                <div class="metric-card">
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <strong>Pacing Consistency</strong>
-                                        <span class="metric-label">0%</span>
-                                    </div>
-                                    <div class="metric-track"><div class="metric-fill" data-progress="84"></div></div>
-                                </div>
-                                <div class="metric-card mb-0">
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <strong>Retention Architecture</strong>
-                                        <span class="metric-label">0%</span>
-                                    </div>
-                                    <div class="metric-track"><div class="metric-fill" data-progress="91"></div></div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 mt-4 mt-lg-0">
-                                <div class="h-100 d-flex flex-column justify-content-center">
-                                    <h4 class="mb-3 text-gradient">Outcome Focused Workflow</h4>
-                                    <p class="opacity-75 mb-3">Every draft is evaluated against clear performance levers before final delivery.</p>
-                                    <p class="opacity-75 mb-2">- Better opening momentum for first 30 seconds</p>
-                                    <p class="opacity-75 mb-2">- Cleaner scene transitions to reduce drop-offs</p>
-                                    <p class="opacity-75 mb-0">- Intentional retention beats for long-form structure</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="section-lead-icon text-center"><i class="fa-solid fa-gears"></i></div>
+            <h2 class="text-center mb-3 fw-bold" style="font-size: 2.8rem; font-family: var(--font-heading);">
+                How It <span style="font-family: var(--font-heading); font-style: italic; font-weight: 500; color: #3499d4;">Works.</span>
+            </h2>
+            <p class="text-center opacity-75 mb-5 fs-5">You get on camera, we handle the rest</p>
 
-    <section class="section-padding" id="workflow-timeline">
-        <div class="container">
-            <div class="section-lead-icon"><i class="fa-solid fa-timeline"></i></div>
-            <h2 class="text-center mb-3">Editing System <span class="text-gradient">Timeline</span></h2>
-            <p class="text-center opacity-75 mb-5">From footage handoff to publish-ready delivery, every step is structured.</p>
             <div class="timeline-wrap" data-aos="fade-up">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
-                        <small class="text-gradient fw-bold">DAY 0</small>
-                        <h5 class="mt-2 mb-2">Raw Footage Intake</h5>
-                        <p class="opacity-75 mb-0">Footage, references, and direction are mapped into a clear narrative brief.</p>
+                        <div class="mini-icon"><i class="fa-solid fa-compass"></i></div>
+                        <div class="d-block"><small class="text-gradient fw-bold">STEP 1</small></div>
+                        <h5 class="mt-2 mb-2">Align & Direct</h5>
+                        <p class="opacity-75 mb-0">We align on your channel goals and direction.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
-                        <small class="text-gradient fw-bold">DAY 1</small>
-                        <h5 class="mt-2 mb-2">Story Spine + Structure</h5>
-                        <p class="opacity-75 mb-0">The edit is built around hook, pace, and retention checkpoints.</p>
+                        <div class="mini-icon"><i class="fa-solid fa-folder-open"></i></div>
+                        <div class="d-block"><small class="text-gradient fw-bold">STEP 2</small></div>
+                        <h5 class="mt-2 mb-2">Submit Footage</h5>
+                        <p class="opacity-75 mb-0">You submit footage and context.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
-                        <small class="text-gradient fw-bold">DAY 2</small>
-                        <h5 class="mt-2 mb-2">Polish + Visual Dynamics</h5>
-                        <p class="opacity-75 mb-0">Graphics, transitions, and rhythm improvements are layered for clarity and flow.</p>
+                        <div class="mini-icon"><i class="fa-solid fa-film"></i></div>
+                        <div class="d-block"><small class="text-gradient fw-bold">STEP 3</small></div>
+                        <h5 class="mt-2 mb-2">First Draft Drafted</h5>
+                        <p class="opacity-75 mb-0">You receive a structured first draft within the agreed timeline.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
-                        <small class="text-gradient fw-bold">DAY 2-3</small>
-                        <h5 class="mt-2 mb-2">Delivery + Refinements</h5>
-                        <p class="opacity-75 mb-0">Final handoff with minor refinements if needed, then ready to publish.</p>
+                        <div class="mini-icon"><i class="fa-solid fa-rocket"></i></div>
+                        <div class="d-block"><small class="text-gradient fw-bold">STEP 4</small></div>
+                        <h5 class="mt-2 mb-2">Refine & Publish</h5>
+                        <p class="opacity-75 mb-0">Minor refinements if needed — then publish.</p>
                     </div>
                 </div>
             </div>
+
+            <div class="text-center mt-5">
+                <p class="fw-bold fs-5 opacity-75 mb-4">Simple. Predictable. Scalable.</p>
+                <a href="#book" class="btn-glow">Book a Call</a>
+            </div>
         </div>
     </section>
+
+
 
     <!-- WHO THIS IS FOR -->
     <section class="section-padding">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <div class="section-lead-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
-                    <h2 class="display-5 mb-5 text-gradient">Who This Is For</h2>
-                    <div class="addx-card mb-4">
-                        <h4 class="text-white mb-4">Ideal Clients</h4>
-                        <p class="fs-5 opacity-75 mb-2">✔ Creators uploading at least 1 long-form video per week</p>
-                        <p class="fs-5 opacity-75 mb-2">✔ Focused on long-term channel growth</p>
-                        <p class="fs-5 opacity-75 mb-0">✔ Ready to stop managing editors</p>
+                <div class="col-lg-10" data-aos="fade-up">
+                    <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+                        <span style="border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 16px; font-size: 0.85rem; color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.05);">Outcomes</span>
                     </div>
-                    <div style="width: 60%; height: 1px; background: rgba(52, 153, 212, 0.4); margin: 30px auto;"></div>
-                    <div class="addx-card mt-4">
-                        <h4 class="text-white mb-4">Not For</h4>
-                        <p class="fs-5 opacity-75 mb-2">✘ Brand-new channels</p>
-                        <p class="fs-5 opacity-75 mb-2">✘ Budget-only shoppers</p>
-                        <p class="fs-5 opacity-75 mb-0">✘ One-off or occasional uploads</p>
+                    <h2 class="mb-3" style="font-family: var(--font-body); font-weight: 700; color: #ffffff; text-align: center; font-size: 2.5rem; line-height: 1.2;">Who This Is For</h2>
+                    <p class="text-center opacity-75 mb-5" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">See if our streamlined editing workflow is the right fit for your channel's growth stage.</p>
+
+                    <div class="addx-card" style="padding: 0; border-radius: 24px; background: rgba(14, 21, 38, 0.4); border: 1px dashed rgba(255,255,255,0.08); overflow: hidden;">
+                        <div class="row g-0">
+                            <!-- Left Side: Not For (Inactive) -->
+                            <div class="col-md-6" style="padding: 40px 30px;">
+                                <h4 class="mb-4 text-center" style="color: #ffffff; font-family: var(--font-body); font-weight: 700; font-size: 1.5rem;">Not For</h4>
+                                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px;">
+                                    <li style="display: flex; align-items: center; gap: 16px; color: rgba(255,255,255,0.5); font-size: 1.1rem; font-weight: 500;">
+                                        <div style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); background: transparent; flex-shrink: 0;"></div>
+                                        Brand-new channels
+                                    </li>
+                                    <li style="display: flex; align-items: center; gap: 16px; color: rgba(255,255,255,0.5); font-size: 1.1rem; font-weight: 500;">
+                                        <div style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); background: transparent; flex-shrink: 0;"></div>
+                                        Budget-only shoppers
+                                    </li>
+                                    <li style="display: flex; align-items: center; gap: 16px; color: rgba(255,255,255,0.5); font-size: 1.1rem; font-weight: 500;">
+                                        <div style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); background: transparent; flex-shrink: 0;"></div>
+                                        One-off or occasional uploads
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Right Side: Ideal Clients (Active) -->
+                            <div class="col-md-6 d-flex flex-column h-100" style="background: var(--primary); padding: 40px 30px; border-radius: 20px; box-shadow: -10px 0 30px rgba(0,0,0,0.3); position: relative; z-index: 2; margin-top: -12px; margin-bottom: -12px; transform: scale(1.02);">
+                                <h4 class="mb-4 text-center" style="color: #ffffff; font-family: var(--font-body); font-weight: 700; font-size: 1.5rem;">Ideal Clients</h4>
+                                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px;">
+                                    <li style="display: flex; align-items: flex-start; gap: 16px; color: #ffffff; font-size: 1.1rem; font-weight: 600;">
+                                        <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg-base); flex-shrink: 0; margin-top: 4px; box-shadow: 0 0 15px rgba(10,17,40,0.6), inset 0 2px 4px rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #00d2ff; box-shadow: 0 0 12px #00d2ff, 0 0 20px #00d2ff;"></div></div>
+                                        Creators uploading at least 1 long-form video per week
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; gap: 16px; color: #ffffff; font-size: 1.1rem; font-weight: 600;">
+                                        <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg-base); flex-shrink: 0; margin-top: 4px; box-shadow: 0 0 15px rgba(10,17,40,0.6), inset 0 2px 4px rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #00d2ff; box-shadow: 0 0 12px #00d2ff, 0 0 20px #00d2ff;"></div></div>
+                                        Focused on long-term channel growth
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; gap: 16px; color: #ffffff; font-size: 1.1rem; font-weight: 600;">
+                                        <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--bg-base); flex-shrink: 0; margin-top: 4px; box-shadow: 0 0 15px rgba(10,17,40,0.6), inset 0 2px 4px rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #00d2ff; box-shadow: 0 0 12px #00d2ff, 0 0 20px #00d2ff;"></div></div>
+                                        Ready to stop managing editors
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1702,7 +2166,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
                     <div class="section-lead-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                    <h2 class="display-5 mb-4 text-gradient">Why This Workflow Works Better Than Generic Editors</h2>
+
+                      <h2 class="display-5 mb-4 "><span style="color: white !important;">Why This Workflow Works Better Than </span> <span class="text-gradient"><i>Generic Editors</i></span></h2>
                     <p class="fs-5 opacity-75 mb-5">Built for consistency, growth, and stress-free publishing.</p>
                     <div style="width: 60%; height: 1px; background: rgba(52, 153, 212, 0.4); margin: 0 auto 40px;"></div>
                     <div class="addx-card text-start text-lg-center">
@@ -1719,63 +2184,63 @@
     <section class="section-padding" id="faq" style="background: rgba(19, 42, 94, 0.3);">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center" data-aos="fade-up">
-                    <div class="section-lead-icon"><i class="fa-solid fa-circle-question"></i></div>
-                    <h2 class="display-5 mb-5 text-gradient">Frequently Asked Questions</h2>
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="section-lead-icon" style="margin: 0 auto 18px;"><i class="fa-solid fa-circle-question"></i></div>
+                    <h2 class="mb-5 text-center" style="font-family: var(--font-body); font-weight: 500; font-size: 2.8rem; letter-spacing: -0.5px; color: #ffffff;">Frequently Asked Questions</h2>
                     <div class="accordion" id="faqAccordion">
-                        <div class="accordion-item faq-item">
-                            <h2 class="accordion-header" id="faqHeadOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+                        <div class="accordion-item faq-item" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-bottom: 12px; background: rgba(14,21,38,0.5);">
+                            <h2 class="accordion-header" id="faqHeadOne" style="font-family: var(--font-body);">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne" style="font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; color: #ffffff;">
                                     Do you offer trial videos?
                                     <i class="fa-solid fa-chevron-down faq-chevron"></i>
                                 </button>
                             </h2>
                             <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadOne" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">We don't offer free trials, but you can start with a single paid video to experience the workflow and quality.</div>
+                                <div class="accordion-body" style="font-family: var(--font-body); font-weight: 400; opacity: 0.8; font-size: 1rem; color: #ffffff;">We don't offer free trials, but you can start with a single paid video to experience the workflow and quality.</div>
                             </div>
                         </div>
-                        <div class="accordion-item faq-item">
-                            <h2 class="accordion-header" id="faqHeadTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                        <div class="accordion-item faq-item" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-bottom: 12px; background: rgba(14,21,38,0.5);">
+                            <h2 class="accordion-header" id="faqHeadTwo" style="font-family: var(--font-body);">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo" style="font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; color: #ffffff;">
                                     How long does editing take?
                                     <i class="fa-solid fa-chevron-down faq-chevron"></i>
                                 </button>
                             </h2>
                             <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadTwo" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">Turnaround depends on your needs and package, but most videos are delivered within 2-3 days.</div>
+                                <div class="accordion-body" style="font-family: var(--font-body); font-weight: 400; opacity: 0.8; font-size: 1rem; color: #ffffff;">Turnaround depends on your needs and package, but most videos are delivered within 2-3 days.</div>
                             </div>
                         </div>
-                        <div class="accordion-item faq-item">
-                            <h2 class="accordion-header" id="faqHeadThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                        <div class="accordion-item faq-item" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-bottom: 12px; background: rgba(14,21,38,0.5);">
+                            <h2 class="accordion-header" id="faqHeadThree" style="font-family: var(--font-body);">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree" style="font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; color: #ffffff;">
                                     Do you offer revisions?
                                     <i class="fa-solid fa-chevron-down faq-chevron"></i>
                                 </button>
                             </h2>
                             <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeadThree" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">Yes. Your first video includes a satisfaction guarantee. If it's not an upgrade from your previous editor, I'll revise it until it is, or we don't continue.</div>
+                                <div class="accordion-body" style="font-family: var(--font-body); font-weight: 400; opacity: 0.8; font-size: 1rem; color: #ffffff;">Yes. Your first video includes a satisfaction guarantee. If it's not an upgrade from your previous editor, I'll revise it until it is, or we don't continue.</div>
                             </div>
                         </div>
-                        <div class="accordion-item faq-item">
-                            <h2 class="accordion-header" id="faqHeadFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+                        <div class="accordion-item faq-item" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-bottom: 12px; background: rgba(14,21,38,0.5);">
+                            <h2 class="accordion-header" id="faqHeadFour" style="font-family: var(--font-body);">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour" style="font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; color: #ffffff;">
                                     What if I don't like the final result?
                                     <i class="fa-solid fa-chevron-down faq-chevron"></i>
                                 </button>
                             </h2>
                             <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqHeadFour" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">You're protected by the First-Video Satisfaction Guarantee.</div>
+                                <div class="accordion-body" style="font-family: var(--font-body); font-weight: 400; opacity: 0.8; font-size: 1rem; color: #ffffff;">You're protected by the First-Video Satisfaction Guarantee.</div>
                             </div>
                         </div>
-                        <div class="accordion-item faq-item">
-                            <h2 class="accordion-header" id="faqHeadFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
+                        <div class="accordion-item faq-item" style="border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; margin-bottom: 12px; background: rgba(14,21,38,0.5);">
+                            <h2 class="accordion-header" id="faqHeadFive" style="font-family: var(--font-body);">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive" style="font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; color: #ffffff;">
                                     Why not hire your own editor?
                                     <i class="fa-solid fa-chevron-down faq-chevron"></i>
                                 </button>
                             </h2>
                             <div id="faqFive" class="accordion-collapse collapse" aria-labelledby="faqHeadFive" data-bs-parent="#faqAccordion">
-                                <div class="accordion-body">Managing an in-house editor requires oversight and time. This system removes that burden while keeping your content structured for growth.</div>
+                                <div class="accordion-body" style="font-family: var(--font-body); font-weight: 400; opacity: 0.8; font-size: 1rem; color: #ffffff;">Managing an in-house editor requires oversight and time. This system removes that burden while keeping your content structured for growth.</div>
                             </div>
                         </div>
                     </div>
@@ -1784,217 +2249,16 @@
         </div>
     </section>
 
-    <section class="section-padding" id="portfolio" style="background: rgba(0,0,0,0.3); backdrop-filter: blur(10px);">
-        <div class="container">
-            <div class="section-lead-icon"><i class="fa-solid fa-photo-film"></i></div>
-            <h2 class="text-center mb-5">Recent <span class="text-gradient">Work</span></h2>
-            <p class="portfolio-section-note">A curated selection of edits built for retention, stronger watch-time curves, and measurable channel momentum.</p>
-            <div class="case-study-grid portfolio-featured-row">
-                <article class="addx-card h-100">
-                    <div class="case-meta">
-                        <span class="tag-pill tag-cyan">Business Channel</span>
-                        <span class="tag-pill tag-green">Long Form</span>
-                    </div>
-                    <h4 class="mb-3">From Slow Openings to Strong Hook Retention</h4>
-                    <p class="opacity-75 mb-2"><strong>Problem:</strong> Strong ideas, but weak first 30 seconds and inconsistent pacing.</p>
-                    <p class="opacity-75 mb-2"><strong>What Changed:</strong> Hook restructuring, cleaner pattern interrupts, tighter narrative rhythm.</p>
-                    <div class="case-result">Result: Better minute-one hold and stronger watch-time trend.</div>
-                </article>
-                <article class="addx-card h-100">
-                    <div class="case-meta">
-                        <span class="tag-pill tag-violet">Education</span>
-                        <span class="tag-pill tag-green">Consistency</span>
-                    </div>
-                    <h4 class="mb-3">From Delivery Stress to Predictable Publishing</h4>
-                    <p class="opacity-75 mb-2"><strong>Problem:</strong> Missed deadlines and heavy revision loops.</p>
-                    <p class="opacity-75 mb-2"><strong>What Changed:</strong> Locked workflow checkpoints, clearer brief, faster refinement cycle.</p>
-                    <div class="case-result">Result: Faster delivery with less back-and-forth and higher consistency.</div>
-                </article>
-            </div>
-            <div class="portfolio-grid" data-aos="fade-up">
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="_xjg5mOf-m8" data-video-title="High-retention storytelling edit with strategic hook pacing.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/_xjg5mOf-m8/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">High-retention storytelling edit with strategic hook pacing.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Long Form</span><span class="tag-pill tag-green">Retention</span><span class="tag-pill tag-violet">Growth</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">+139K Views</span><span class="stat-pill">CTR Lift</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="ygdqm4QrfdM" data-video-title="Education format optimized for clear information flow and watch-time.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/ygdqm4QrfdM/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Education format optimized for clear information flow and watch-time.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Education</span><span class="tag-pill tag-green">Clarity</span><span class="tag-pill tag-violet">Pacing</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">2-3 Day Delivery</span><span class="stat-pill">Strong Avg View Duration</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="8S1l53oGkjc" data-video-title="Authority-driven talking-head edit with cleaner momentum transitions.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/8S1l53oGkjc/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Authority-driven talking-head edit with cleaner momentum transitions.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Personal Brand</span><span class="tag-pill tag-green">Hook</span><span class="tag-pill tag-violet">Momentum</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">Higher Session Time</span><span class="stat-pill">Repeatable Format</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="rpaExRYwCjk" data-video-title="Fast-pace visual narrative built to reduce early drop-offs.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/rpaExRYwCjk/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Fast-pace visual narrative built to reduce early drop-offs.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Narrative</span><span class="tag-pill tag-green">Retention Arc</span><span class="tag-pill tag-violet">Visual FX</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">Drop-off Reduced</span><span class="stat-pill">Stronger Open</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="K-vmuCx5k8I" data-video-title="Long-form strategy piece with clean chapter rhythm and emphasis cuts.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/K-vmuCx5k8I/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Long-form strategy piece with clean chapter rhythm and emphasis cuts.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Strategy</span><span class="tag-pill tag-green">Structure</span><span class="tag-pill tag-violet">Authority</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">Improved Viewer Flow</span><span class="stat-pill">Consistent Upload Quality</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="NGGvmLhH2wo" data-video-title="Conversion-focused edit balancing insight depth with visual energy.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/NGGvmLhH2wo/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Conversion-focused edit balancing insight depth with visual energy.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Conversion</span><span class="tag-pill tag-green">Storyline</span><span class="tag-pill tag-violet">Audience Fit</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">Lead Quality Up</span><span class="stat-pill">On-Time Delivery</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="WovT1fJaI_Q" data-video-title="Creator growth edit with stronger narrative anchors and retention beats.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/WovT1fJaI_Q/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Creator growth edit with stronger narrative anchors and retention beats.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Creator Growth</span><span class="tag-pill tag-green">Retention Beats</span><span class="tag-pill tag-violet">Brand Voice</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">Increased Return Viewers</span><span class="stat-pill">Sharper Story Arc</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="x4L09yYeotU" data-video-title="Educational breakdown with modern pacing and concise visual callouts.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/x4L09yYeotU/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Educational breakdown with modern pacing and concise visual callouts.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Explainer</span><span class="tag-pill tag-green">Visual Clarity</span><span class="tag-pill tag-violet">Watch-Time</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">Higher Completion Rate</span><span class="stat-pill">Cleaner Delivery</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="cVLPYIXujSk" data-video-title="Punchy social-proof style edit built for fast comprehension and trust.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/cVLPYIXujSk/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Punchy social-proof style edit built for fast comprehension and trust.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Case Study</span><span class="tag-pill tag-green">Trust</span><span class="tag-pill tag-violet">Proof</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">Credibility Lift</span><span class="stat-pill">Audience Alignment</span></div>
-                    </div>
-                </article>
-                <article class="portfolio-item">
-                    <button class="portfolio-trigger" type="button" data-video-id="DJIFEoV2mrc" data-video-title="Result-driven long-form production with cleaner information hierarchy.">
-                        <div class="portfolio-cover"><img class="portfolio-thumb" src="https://i.ytimg.com/vi/DJIFEoV2mrc/hqdefault.jpg" alt="Portfolio video thumbnail" loading="lazy"></div>
-                    </button>
-                    <div class="portfolio-content">
-                        <p class="portfolio-title">Result-driven long-form production with cleaner information hierarchy.</p>
-                        <div class="portfolio-badges"><span class="tag-pill tag-cyan">Long Form</span><span class="tag-pill tag-green">Hierarchy</span><span class="tag-pill tag-violet">Engagement</span></div>
-                        <div class="portfolio-stats"><span class="stat-pill">More Watch Minutes</span><span class="stat-pill">Publish Ready</span></div>
-                    </div>
-                </article>
-                </div>
-        </div>
-    </section>
-
-    <section class="section-padding" id="short-form" style="background: rgba(7, 16, 34, 0.5);">
-        <div class="container">
-            <div class="section-lead-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
-            <h2 class="text-center mb-3">Short Form <span class="text-gradient">Videos</span></h2>
-            <p class="portfolio-section-note">Reels, Shorts, TikToks, and LinkedIn clips designed for fast hooks and strong shareability.</p>
-            <div class="shorts-grid">
-                <button class="shorts-card portfolio-trigger" type="button" data-video-id="rpaExRYwCjk" data-video-title="Fast-pace short-form cut built to reduce early drop-offs.">
-                    <div class="shorts-thumb">
-                        <img src="https://i.ytimg.com/vi/rpaExRYwCjk/hqdefault.jpg" alt="Short form video thumbnail" loading="lazy">
-                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
-                    </div>
-                    <div class="shorts-content">
-                        <p class="shorts-title">Fast-pace short-form cut built to reduce early drop-offs.</p>
-                        <div class="shorts-meta"><span class="tag-pill tag-cyan">Shorts</span><span class="tag-pill tag-green">Hook</span></div>
-                    </div>
-                </button>
-                <button class="shorts-card portfolio-trigger" type="button" data-video-id="cVLPYIXujSk" data-video-title="Punchy proof-style short made for quick trust and saves.">
-                    <div class="shorts-thumb">
-                        <img src="https://i.ytimg.com/vi/cVLPYIXujSk/hqdefault.jpg" alt="Short form video thumbnail" loading="lazy">
-                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
-                    </div>
-                    <div class="shorts-content">
-                        <p class="shorts-title">Punchy proof-style short made for quick trust and saves.</p>
-                        <div class="shorts-meta"><span class="tag-pill tag-violet">Reels</span><span class="tag-pill tag-green">Engagement</span></div>
-                    </div>
-                </button>
-                <button class="shorts-card portfolio-trigger" type="button" data-video-id="WovT1fJaI_Q" data-video-title="Creator growth short with tighter anchors and retention beats.">
-                    <div class="shorts-thumb">
-                        <img src="https://i.ytimg.com/vi/WovT1fJaI_Q/hqdefault.jpg" alt="Short form video thumbnail" loading="lazy">
-                        <span class="shorts-play"><i class="fa-solid fa-play"></i></span>
-                    </div>
-                    <div class="shorts-content">
-                        <p class="shorts-title">Creator growth short with tighter anchors and retention beats.</p>
-                        <div class="shorts-meta"><span class="tag-pill tag-cyan">TikTok</span><span class="tag-pill tag-green">Retention</span></div>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </section>
+    <!-- PORTFOLIO SECTION MOVED ABOVE -->
 
     <section class="section-padding text-center" id="book" style="background: rgba(19, 42, 94, 0.4);">
         <div class="container" data-aos="fade-up">
             <div class="addx-card mx-auto" style="max-width: 800px; padding: 60px;">
                 <div class="section-lead-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                <h2 class="mb-4">Ready to Build a <span class="text-gradient">Stress-Free Editing System?</span></h2>
+                <h2 class="mb-4">Ready to Build a <span class="text-gradient"><i>Stress-Free Editing System?</i></span></h2>
                 <p class="opacity-75 mb-5">Limited spots available — quality over quantity. Start with one video. No long-term commitment required.</p>
 
-                <div class="addx-card text-start mb-5" style="padding: 28px;">
-                    <h4 class="mb-3">ROI Mini Calculator</h4>
-                    <p class="opacity-75 mb-4">Estimate potential monthly lift from stronger edits and retention.</p>
-                    <div class="roi-grid">
-                        <div>
-                            <label class="d-block mb-2 opacity-75" for="videosPerMonth">Videos / Month</label>
-                            <input id="videosPerMonth" class="roi-input" type="number" min="1" value="4" />
-                        </div>
-                        <div>
-                            <label class="d-block mb-2 opacity-75" for="avgViews">Avg Views / Video</label>
-                            <input id="avgViews" class="roi-input" type="number" min="100" value="25000" />
-                        </div>
-                        <div>
-                            <label class="d-block mb-2 opacity-75" for="retentionLift">Retention Lift (%)</label>
-                            <input id="retentionLift" class="roi-input" type="number" min="1" max="100" value="12" />
-                        </div>
-                        <div>
-                            <label class="d-block mb-2 opacity-75" for="conversionValue">Lead Value ($)</label>
-                            <input id="conversionValue" class="roi-input" type="number" min="1" value="120" />
-                        </div>
-                    </div>
-                    <div class="roi-output">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="opacity-75">Estimated Additional Monthly Views</span>
-                            <strong id="roiViews" class="text-gradient">0</strong>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="opacity-75">Estimated Monthly Value Signal</span>
-                            <strong id="roiValue" class="text-gradient">$0</strong>
-                        </div>
-                    </div>
-                </div>
+
 
                 <a href="#calendly" class="btn-glow mb-5" style="font-size: 1.1rem; padding: 16px 45px;">Book a Call →</a>
 
@@ -2009,7 +2273,7 @@
                 <p class="opacity-75 mb-5">If it makes sense, we start with one video.</p>
 
                 <div id="calendly" style="border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
-                    <div class="calendly-inline-widget" data-url="https://calendly.com/theiqbal111" style="min-width:320px;height:700px;"></div>
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/aziz09/youtube-growth-strategy-editing-plan" style="min-width:320px;height:700px;"></div>
                     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                 </div>
             </div>
@@ -2060,30 +2324,7 @@
         </div>
     </section>
 
-    <section class="section-padding" id="guarantee" style="background: rgba(8, 18, 38, 0.4);">
-        <div class="container">
-            <div class="section-lead-icon"><i class="fa-solid fa-shield-heart"></i></div>
-            <div class="guarantee-wrap text-center">
-                <h2 class="mb-3">Guarantee + <span class="text-gradient">Risk Reversal</span></h2>
-                <p class="opacity-75 mb-0">Your first video is protected. If it does not feel like a clear upgrade from your previous editing process, we refine it until it does before moving forward.</p>
-                <div class="guarantee-points">
-                    <div class="guarantee-point">
-                        <div class="mini-icon mx-auto"><i class="fa-solid fa-award"></i></div>
-                        First-video satisfaction promise
-                    </div>
-                    <div class="guarantee-point">
-                        <div class="mini-icon mx-auto"><i class="fa-solid fa-clock"></i></div>
-                        Clear turnaround and communication
-                    </div>
-                    <div class="guarantee-point">
-                        <div class="mini-icon mx-auto"><i class="fa-solid fa-check-double"></i></div>
-                        Refinement until publish-ready
-                    </div>
-                </div>
-                <a href="#book" class="btn-glow mt-4">Book Your First Video</a>
-            </div>
-        </div>
-    </section>
+
 
     <section class="section-padding" id="team-strip" style="background: rgba(7, 16, 34, 0.55);">
         <div class="container text-center">
@@ -2092,23 +2333,25 @@
             <p class="portfolio-section-note">Small, focused, and obsessed with creating clean edits that perform.</p>
             <div class="team-grid">
                 <article class="team-card">
-                    <div class="team-avatar"><img src="https://i.pravatar.cc/160?img=12" alt="Aziz Iqbal"></div>
-                    <h5 class="mb-1">Aziz Iqbal</h5>
-                    <p class="opacity-75 mb-0">Lead Editor</p>
+                    <div class="team-avatar"><img src="/assets/images/aziz.png" alt="Aziz Ur Rehman"></div>
+                    <h5 class="mb-1">Aziz Ur Rehman</h5>
+                    <p class="opacity-75 mb-0">Creative Director & Lead Editor</p>
                 </article>
                 <article class="team-card">
-                    <div class="team-avatar"><img src="https://i.pravatar.cc/160?img=5" alt="Project Coordinator"></div>
-                    <h5 class="mb-1">Project Coordinator</h5>
-                    <p class="opacity-75 mb-0">Workflow + Delivery</p>
+                    <div class="team-avatar"><img src="/assets/images/abdullah.png" alt="Muhammad Abdullah"></div>
+                    <h5 class="mb-1">Muhammad Abdullah</h5>
+                    <p class="opacity-75 mb-0">Outreach & Partnerships Manager</p>
                 </article>
                 <article class="team-card">
-                    <div class="team-avatar"><img src="https://i.pravatar.cc/160?img=32" alt="Motion Designer"></div>
-                    <h5 class="mb-1">Motion Designer</h5>
-                    <p class="opacity-75 mb-0">Visual Dynamics</p>
+                    <div class="team-avatar"><img src="/assets/images/talha.png" alt="Talha Malik"></div>
+                    <h5 class="mb-1">Talha Malik</h5>
+                    <p class="opacity-75 mb-0">Client Success & Operations</p>
                 </article>
             </div>
         </div>
     </section>
+
+
 
     <footer class="site-footer">
         <div class="container">
@@ -2119,8 +2362,12 @@
                     <div class="footer-social">
                         <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/azizurrehmankhan" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <!-- /// -->
+                         <!-- Upwork // -->
+                         <a target="_blank" href="https://www.upwork.com/freelancers/editorazk" aria-label="Upwork">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#14A800" width="24" height="24" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M493.9 359.6C443.6 359.6 410.4 320.7 401.1 305.7C413 210.4 447.9 180.3 493.9 180.3C539.4 180.3 574.8 216.7 574.8 270C574.8 323.3 539.4 359.7 493.9 359.7L493.9 359.6zM493.9 121.8C412 121.8 366.1 175.2 352.9 230.2C338 202.2 327 164.7 318.4 129.9L205.2 129.9L205.2 270.9C205.2 322 181.9 359.9 136.4 359.9C90.9 359.9 64.8 322.1 64.8 270.9L65.3 129.9L0 129.9L0 270.9C0 312 13.3 349.3 37.6 376C62.6 403.5 96.8 417.8 136.4 417.8C215.2 417.8 270.2 357.4 270.2 270.9L270.2 176.1C278.4 207.3 298 267.2 335.5 319.7L300.5 519.1L366.9 519.1L390 377.8C397.6 384.1 405.7 389.8 414.2 394.8C436.4 408.8 461.9 416.7 488.1 417.6C488.1 417.6 492.1 417.8 494.2 417.8C575.4 417.8 640.1 354.9 640.1 270C640.1 185.1 575.3 121.9 494.1 121.9L493.9 121.8z"/></svg>
+                         </a>
                     </div>
                 </div>
                 <div>
@@ -2130,6 +2377,7 @@
                         <a href="#how-it-works">How It Works</a>
                         <a href="#portfolio">Portfolio</a>
                         <a href="#faq">FAQ</a>
+                        <!-- <a href="#contact">Contact Us</a> -->
                     </div>
                 </div>
                 <div>
@@ -2137,7 +2385,7 @@
                     <div class="footer-links">
                         <a href="#book">Book a Call</a>
                         <a href="#service-packages">View Packages</a>
-                        <a href="#guarantee">Guarantee</a>
+
                         <a href="#team-strip">Team</a>
                     </div>
                 </div>
@@ -2370,8 +2618,12 @@
             const tick = () => {
                 ringX += (mouseX - ringX) * 0.18;
                 ringY += (mouseY - ringY) * 0.18;
+
                 cursorDot.style.transform = `translate3d(${mouseX - 3.5}px, ${mouseY - 3.5}px, 0)`;
-                cursorRing.style.transform = `translate3d(${ringX - 15}px, ${ringY - 15}px, 0)`;
+                // We set variables here so the animation keyframes can read them
+                cursorRing.style.setProperty('--ring-x', `${ringX - 15}px`);
+                cursorRing.style.setProperty('--ring-y', `${ringY - 15}px`);
+
                 requestAnimationFrame(tick);
             };
 
@@ -2386,6 +2638,30 @@
             });
 
             tick();
+        }
+
+        function openWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('wa-name').value;
+            const message = document.getElementById('wa-message').value;
+            // The WhatsApp number should include the country code without any '+' or '00' prefix.
+            const phone = "923015952850";
+            const text = `Hi, I'm ${name}. ${message}`;
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+
+            // Show success message
+            const btn = document.getElementById('wa-submit-btn');
+            const successMsg = document.getElementById('wa-success-msg');
+
+            btn.style.display = 'none';
+            successMsg.style.display = 'block';
+
+            setTimeout(() => {
+                document.getElementById('whatsappForm').reset();
+                successMsg.style.display = 'none';
+                btn.style.display = '';
+            }, 4000);
         }
     </script>
 </body>

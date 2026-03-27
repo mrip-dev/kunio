@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak - Jannat Iqbal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #1a0033 0%, #330033 25%, #1a0a2e 50%, #16213e 75%, #0f3460 100%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background: linear-gradient(135deg, #1a0033 0%, #330033 25%, #1a0a2e 50%, #16213e 75%, #0f3460 100%); }
+            50% { background: linear-gradient(135deg, #2d0052 0%, #450052 25%, #2e1a52 50%, #1e3a5f 75%, #1a4580 100%); }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .floating-ornament {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .content {
+            text-align: center;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .crescent {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: moonGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes moonGlow {
+            0%, 100% {
+                text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+                transform: scale(1.1);
+            }
+        }
+
+        .name {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff1493, #ff69b4, #ff1493, #ff69b4);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+            animation: gradientFlow 3s ease infinite, slideIn 0.8s ease-out 0.2s both;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .greeting {
+            font-size: clamp(1.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin: 30px 0;
+            letter-spacing: 3px;
+            animation: slideIn 0.8s ease-out 0.4s both;
+            font-family: 'Georgia', serif;
+        }
+
+        .word1 {
+            color: #ff1493;
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.6);
+        }
+
+        .word2 {
+            background: linear-gradient(90deg, #ff69b4, #ffa500, #ffeb3b, #00ff00, #00bfff, #9370db);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowShift 3s ease infinite;
+        }
+
+        @keyframes rainbowShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-top: 30px;
+            max-width: 600px;
+            line-height: 1.8;
+            animation: slideIn 0.8s ease-out 0.6s both;
+            font-style: italic;
+        }
+
+        .confetti-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotateZ(360deg);
+                opacity: 0;
+            }
+        }
+
+        .button-group {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideIn 0.8s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px rgba(255, 20, 147, 0.8);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 105, 180, 0.2);
+            color: #ff69b4;
+            border: 2px solid #ff69b4;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 105, 180, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .geometric-pattern {
+            position: absolute;
+            opacity: 0.05;
+            font-size: 5rem;
+            color: #ff1493;
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                margin: 15px 0;
+            }
+
+            .greeting {
+                margin: 20px 0;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        .light-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .ray {
+            position: absolute;
+            width: 2px;
+            height: 200px;
+            background: linear-gradient(180deg, rgba(255,105,180,0.3) 0%, transparent 100%);
+            left: 50%;
+            top: 50%;
+            transform-origin: top center;
+        }
+
+        .emoji-float {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: emojiFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
+        }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(15deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="light-rays">
+        <div class="ray" style="left: 30%; transform: rotate(-15deg);"></div>
+        <div class="ray" style="left: 50%;"></div>
+        <div class="ray" style="left: 70%; transform: rotate(15deg);"></div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="confetti-container" id="confetti"></div>
+
+    <div class="container">
+        <div class="emoji-float" style="left: 10%; top: 15%; animation-delay: 0s;">🌙</div>
+        <div class="emoji-float" style="right: 10%; top: 20%; animation-delay: 1s;">⭐</div>
+        <div class="emoji-float" style="left: 15%; bottom: 20%; animation-delay: 2s;">✨</div>
+        <div class="emoji-float" style="right: 12%; bottom: 15%; animation-delay: 1.5s;">🌟</div>
+
+        <div class="content">
+            <div class="crescent">🌙</div>
+
+            <h1 class="name">Jannat Iqbal</h1>
+
+            <div class="greeting">
+                <span class="word1">Eid</span>
+                <span class="word2">Mubarak</span>
+            </div>
+
+            <p class="message">
+                May this Eid bring you endless joy, happiness, and all the blessings you deserve.<br>
+                Wishing you a beautiful day filled with love and cherished moments! 💕
+            </p>
+
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="triggerCelebration()">🎉 Celebrate</button>
+                <button class="btn btn-secondary" onclick="toggleParticles()">✨ Sparkle</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const colors = ['#ff1493', '#ff69b4', '#ffa500', '#ffeb3b', '#00ff00', '#00bfff', '#9370db', '#ff6eb4'];
+
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.borderRadius = '50%';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.animation = `float ${Math.random() * 4 + 3}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Confetti animation
+        function triggerCelebration() {
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ff1493', '#ff69b4', '#ffa500', '#ffeb3b', '#00ff00', '#00bfff', '#9370db', '#ff6eb4'];
+
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `confettiFall ${Math.random() * 2 + 2}s ease-in forwards`;
+                confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                confettiContainer.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        let particlesVisible = false;
+        function toggleParticles() {
+            const particles = document.getElementById('particles');
+            particlesVisible = !particlesVisible;
+            particles.style.opacity = particlesVisible ? '1' : '0.3';
+
+            if (!particlesVisible) {
+                particles.style.opacity = '0.3';
+            } else {
+                particles.style.opacity = '1';
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createStars();
+            createParticles();
+        });
+
+        // Auto-trigger celebration on load after delay
+        setTimeout(() => {
+            triggerCelebration();
+        }, 1500);
+    </script>
+</body>
+</html>
