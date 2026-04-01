@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>KunioCreatives | YouTube Growth</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon-k.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon-k.ico" />
+    <meta name="msapplication-TileColor" content="#0a1128" />
+    <meta name="msapplication-TileImage" content="/assets/images/favicon-k.ico" />
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
@@ -405,7 +409,7 @@
             gap: 10px;
             width: 100%;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .nav-master::before {
@@ -448,6 +452,114 @@
         .nav-pill.active {
             color: #eaf7ff !important;
             background: rgba(52, 153, 212, 0.18);
+        }
+
+        .nav-email-item {
+            position: relative;
+        }
+
+        .nav-email-dropdown {
+            position: relative;
+        }
+
+        .nav-email-trigger {
+            display: inline-flex !important;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+        }
+
+        .nav-email-trigger::-webkit-details-marker {
+            display: none;
+        }
+
+        .nav-email-trigger img {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+        }
+
+        .nav-email-chevron {
+            font-size: 0.68rem;
+            color: rgba(211, 236, 255, 0.86);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-email-dropdown[open] .nav-email-chevron {
+            transform: rotate(180deg);
+        }
+
+        .nav-email-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            min-width: 285px;
+            border-radius: 14px;
+            border: 1px solid rgba(104, 206, 255, 0.34);
+            background: linear-gradient(160deg, rgba(5, 12, 27, 0.96), rgba(11, 25, 55, 0.94));
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.42), 0 0 20px rgba(52, 153, 212, 0.24);
+            padding: 12px;
+            transform: translateY(8px) scale(0.97);
+            transform-origin: top right;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.24s ease, transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
+            z-index: 1300;
+        }
+
+        .nav-email-dropdown[open] .nav-email-menu {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .nav-email-caption {
+            font-size: 0.7rem;
+            letter-spacing: 0.9px;
+            text-transform: uppercase;
+            color: rgba(164, 220, 255, 0.9);
+            margin: 0 2px 8px;
+        }
+
+        .nav-email-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 11px 12px;
+            border-radius: 11px;
+            border: 1px solid rgba(127, 216, 255, 0.22);
+            text-decoration: none;
+            color: #e9f6ff;
+            background: rgb(52, 153, 212);
+            transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+        }
+
+        .nav-email-link i {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(52, 153, 212, 0.2);
+            color: #9ee5ff;
+            font-size: 0.86rem;
+        }
+
+        .nav-email-link span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15px;
+        }
+
+        .nav-email-link:hover {
+            transform: translateY(-2px);
+            background: rgba(52, 153, 212, 0.2);
+            border-color: rgba(127, 216, 255, 0.42);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+            color: #ffffff;
         }
 
         .hero-mini-note {
@@ -871,8 +983,8 @@
             position: relative;
             overflow: hidden;
             border: 2px solid rgba(124, 216, 255, 0.6);
-            box-shadow: 0 0 0 6px rgba(52, 153, 212, 0.16), 0 0 22px rgba(52, 153, 212, 0.52);
-            animation: avatar-pulse 3.8s ease-in-out infinite;
+            box-shadow: 0 0 0 6px rgba(52, 153, 212, 0.16), 0 0 22px rgba(17, 39, 52, 0.26);
+            /* animation: avatar-pulse 3.8s ease-in-out infinite; */
         }
 
         .team-avatar img {
@@ -1330,6 +1442,15 @@
                 display: block;
                 text-align: left;
             }
+            .nav-email-trigger {
+                width: fit-content;
+            }
+            .nav-email-menu {
+                left: 0;
+                right: auto;
+                width: min(100%, 310px);
+                transform-origin: top left;
+            }
             .navbar-cta-desktop { display: none !important; }
             .timeline-wrap::before { left: 16px; transform: none; }
             .timeline-item {
@@ -1433,6 +1554,7 @@
             }
         }
 
+        @media (max-width: 991.98px) {
             /* Reduce expensive effects on mobile for smoother scrolling/rendering. */
             .glowing-blob { filter: blur(82px); opacity: 0.45; }
             .navbar.fixed-top {
@@ -1450,7 +1572,6 @@
             transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1) !important;
             will-change: transform, opacity;
             backface-visibility: hidden;
-            transform: translateZ(0);
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1536,7 +1657,22 @@
                             <li class="nav-item"><a class="nav-link nav-pill" href="#portfolio">Portfolio</a></li>
                             <li class="nav-item"><a class="nav-link nav-pill" href="#how-it-works">How It Works</a></li>
                             <li class="nav-item"><a class="nav-link nav-pill" href="#faq">FAQ</a></li>
-                            <li class="nav-item"><a class="nav-link nav-pill" href="mailto:aziz@gmail.com"><img width="20" height="20" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/></a></li>
+                            <li class="nav-item nav-email-item">
+                                <details class="nav-email-dropdown">
+                                    <summary class="nav-link nav-pill nav-email-trigger">
+                                        <img src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail icon">
+                                        <span>Email</span>
+                                        <i class="fa-solid fa-chevron-down nav-email-chevron" aria-hidden="true"></i>
+                                    </summary>
+                                    <div class="nav-email-menu" role="menu" aria-label="Email options">
+                                        <p class="nav-email-caption">Contact KunioCreatives</p>
+                                        <a class="nav-email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=aziz@kuniocreatives.com" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+                                            <span>aziz@kuniocreatives.com</span>
+                                        </a>
+                                    </div>
+                                </details>
+                            </li>
                             <li class="nav-item d-lg-none mt-2"><a class="btn-glow w-100 text-center" href="#book">Book a Call</a></li>
                         </ul>
                     </div>
@@ -2446,17 +2582,24 @@
         });
 
         AOS.init({ duration: 700, once: true, offset: 18, easing: 'ease-out-cubic', startEvent: 'DOMContentLoaded' });
-
-        // Addx-style mouse tracking glow for cards
-        document.querySelectorAll('.addx-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
+        window.addEventListener('load', () => {
+            AOS.refreshHard();
         });
+
+        const canUseFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        // Addx-style mouse tracking glow for cards (desktop/fine pointer only).
+        if (canUseFinePointer) {
+            document.querySelectorAll('.addx-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
 
         // Add a scrolled state to the navbar for stronger contrast.
         const navBar = document.querySelector('.navbar');
@@ -2464,7 +2607,6 @@
             navBar.classList.toggle('navbar-scrolled', window.scrollY > 20);
         };
         updateNavState();
-        window.addEventListener('scroll', updateNavState);
 
         // Scroll progress line for a more cinematic browsing flow.
         const progress = document.getElementById('scrollProgress');
@@ -2475,7 +2617,6 @@
             progress.style.width = `${Math.min(ratio, 100)}%`;
         };
         updateScrollProgress();
-        window.addEventListener('scroll', updateScrollProgress);
 
         // Floating back-to-top control for long pages.
         const backToTop = document.getElementById('backToTop');
@@ -2483,7 +2624,6 @@
             backToTop.classList.toggle('show', window.scrollY > 500);
         };
         updateBackToTop();
-        window.addEventListener('scroll', updateBackToTop);
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -2588,7 +2728,23 @@
         };
 
         updateBottomNavActive();
-        window.addEventListener('scroll', updateBottomNavActive);
+
+        // Use one rAF-scheduled scroll listener for all scroll-driven UI updates.
+        let scrollRafPending = false;
+        const onScrollFrame = () => {
+            scrollRafPending = false;
+            updateNavState();
+            updateScrollProgress();
+            updateBackToTop();
+            updateBottomNavActive();
+        };
+        window.addEventListener('scroll', () => {
+            if (scrollRafPending) {
+                return;
+            }
+            scrollRafPending = true;
+            requestAnimationFrame(onScrollFrame);
+        }, { passive: true });
 
         // Keep top mobile nav stable by collapsing it after selection.
         const topMobileNav = document.getElementById('mainNav');
@@ -2602,10 +2758,50 @@
             });
         }
 
+        // Prevent accidental direct navigation on mobile: first tap opens email menu, second tap opens Gmail.
+        const emailDropdown = document.querySelector('.nav-email-dropdown');
+        const emailTrigger = document.querySelector('.nav-email-trigger');
+        const emailPrimaryLink = document.querySelector('.nav-email-link');
+        let emailOpenedAt = 0;
+
+        if (emailDropdown && emailTrigger) {
+            emailTrigger.addEventListener('click', event => {
+                event.preventDefault();
+                event.stopPropagation();
+
+                const willOpen = !emailDropdown.open;
+                emailDropdown.open = willOpen;
+
+                if (willOpen) {
+                    emailOpenedAt = Date.now();
+                }
+            });
+
+            document.addEventListener('click', event => {
+                if (!emailDropdown.contains(event.target)) {
+                    emailDropdown.open = false;
+                }
+            });
+
+            if (emailPrimaryLink) {
+                emailPrimaryLink.addEventListener('click', event => {
+                    const tappedTooSoon = Date.now() - emailOpenedAt < 320;
+                    if (tappedTooSoon) {
+                        event.preventDefault();
+                        return;
+                    }
+
+                    if (window.innerWidth <= 991.98 && topMobileNav && topMobileNav.classList.contains('show')) {
+                        bootstrap.Collapse.getOrCreateInstance(topMobileNav).hide();
+                    }
+                });
+            }
+        }
+
         // Desktop custom cursor inspired by modern agency UI patterns.
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorRing = document.querySelector('.cursor-ring');
-        const canUseCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        const canUseCustomCursor = canUseFinePointer;
 
         if (canUseCustomCursor && cursorDot && cursorRing) {
             let ringX = 0;
@@ -2630,7 +2826,7 @@
             window.addEventListener('mousemove', e => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
-            });
+            }, { passive: true });
 
             document.querySelectorAll('a, button, .portfolio-trigger, .shorts-card').forEach(el => {
                 el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
